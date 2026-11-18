@@ -1,0 +1,459 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const services = [
+  {
+    slug: 'gym-membership-wigan',
+    name: 'Gym & Strength Floor',
+    desc: 'State-of-the-art equipment, strength racks, and a performance-focused floor built for serious training.',
+    img: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=600&q=80&auto=format&fit=crop',
+    imgAlt: 'Man lifting weights in modern gym',
+  },
+  {
+    slug: 'personal-trainer-wigan',
+    name: 'Personal Training',
+    desc: 'Expert coaches who build programmes around your goals — not generic templates.',
+    img: 'https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=600&q=80&auto=format&fit=crop',
+    imgAlt: 'Personal trainer coaching athlete',
+  },
+  {
+    slug: 'sports-massage-wigan',
+    name: 'Sports Massage',
+    desc: 'Deep tissue and sports-specific massage to accelerate recovery and prevent injury.',
+    img: 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=600&q=80&auto=format&fit=crop',
+    imgAlt: 'Sports massage therapist treating athlete',
+  },
+  {
+    slug: 'physiotherapy-wigan',
+    name: 'Physiotherapy',
+    desc: 'CIMSPA-registered physios diagnosing and treating injuries to get you back performing.',
+    img: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=600&q=80&auto=format&fit=crop',
+    imgAlt: 'Physiotherapist treating knee injury',
+  },
+  {
+    slug: 'ice-bath-wigan',
+    name: 'Cold Water Immersion',
+    desc: 'Medical-grade cold plunge pools at precisely controlled temperatures for elite recovery.',
+    img: 'https://images.unsplash.com/photo-1706197884196-eb9a8ea96d41?w=600&q=80&auto=format&fit=crop',
+    imgAlt: 'Athlete in cold water ice bath',
+  },
+  {
+    slug: 'infrared-sauna-wigan',
+    name: 'Infrared Sauna',
+    desc: 'Full-spectrum infrared therapy to detox, reduce inflammation, and improve sleep quality.',
+    img: 'https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=600&q=80&auto=format&fit=crop',
+    imgAlt: 'Woman relaxing in infrared sauna',
+  },
+];
+
+const stats = [
+  { num: '1,200+', label: 'Active Members' },
+  { num: '8',      label: 'Specialist Practitioners' },
+  { num: '4.9★',   label: 'Google Rating' },
+  { num: '6',      label: 'Recovery Modalities' },
+  { num: '2022',   label: 'Est. in Wigan' },
+];
+
+const testimonials = [
+  {
+    text: "I've trained at gyms all over Wigan and Greater Manchester. Forge is on a different level for recovery facilities. The ice baths after a heavy leg session have completely changed how I train.",
+    name: 'Dan C.',
+    role: 'Member since 2023 · Rugby league player',
+    img: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80&auto=format&fit=crop&crop=face',
+  },
+  {
+    text: "The physiotherapy team sorted out a knee injury that had been limiting me for six months. Within four sessions I was back running. Genuinely the best sports physio I've ever had.",
+    name: 'Emma R.',
+    role: 'Member since 2022 · Marathon runner',
+    img: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&q=80&auto=format&fit=crop&crop=face',
+  },
+  {
+    text: "The infrared sauna is worth the membership alone. I sleep so much better on days I use it. The team are knowledgeable and never make you feel like you need to be a professional athlete.",
+    name: 'Priya M.',
+    role: 'Member since 2024 · Cyclist',
+    img: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&q=80&auto=format&fit=crop&crop=face',
+  },
+];
+
+const features = [
+  { icon: '🏋️', label: 'No contracts' },
+  { icon: '📍', label: 'Town centre location' },
+  { icon: '🕕', label: 'Open 7 days a week' },
+  { icon: '🧊', label: 'Medical-grade recovery' },
+  { icon: '👥', label: '8 specialist practitioners' },
+  { icon: '⚡', label: 'HYROX-certified training' },
+];
+---
+
+<Layout
+  title="Forge Wellness & Recovery | Gym & Recovery Centre Wigan"
+  description="Forge Wellness & Recovery is Wigan's premier gym and recovery centre. Gym membership, sports massage, physiotherapy, ice baths, infrared sauna and nutrition coaching. Book today."
+  canonical="https://forge-wellness.netlify.app/"
+>
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       HERO
+  ═══════════════════════════════════════════════════════════════ -->
+  <section class="relative min-h-[90vh] flex items-center bg-forge-steel overflow-hidden" aria-labelledby="hero-heading">
+
+    <!-- Background image -->
+    <img
+      src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1600&q=80&auto=format&fit=crop"
+      alt=""
+      aria-hidden="true"
+      width="1600" height="900"
+      loading="eager"
+      fetchpriority="high"
+      decoding="async"
+      class="absolute inset-0 w-full h-full object-cover object-center"
+    />
+
+    <!-- Gradient overlay -->
+    <div class="absolute inset-0 bg-hero-overlay"></div>
+
+    <!-- Orange slash accent -->
+    <div class="absolute top-0 right-0 w-1/3 h-full opacity-20 pointer-events-none">
+      <div class="absolute inset-0 bg-orange-gradient" style="clip-path: polygon(25% 0, 100% 0, 100% 100%, 0% 100%);"></div>
+    </div>
+
+    <!-- Content -->
+    <div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 py-24 w-full">
+      <div class="max-w-2xl">
+        <p class="eyebrow text-forge-orange/90 mb-6 animate-fade-in">
+          Wigan's premier gym &amp; recovery centre
+        </p>
+        <h1
+          id="hero-heading"
+          class="font-display font-900 uppercase text-white mb-6 leading-none tracking-wide"
+          style="font-size:clamp(3rem,8vw,6rem);"
+        >
+          Train hard.<br />
+          <span class="text-forge-orange">Recover harder.</span>
+        </h1>
+        <p class="text-white/75 text-lg leading-relaxed mb-10 max-w-xl">
+          Gym membership, sports massage, physiotherapy, ice baths, infrared sauna
+          and nutrition coaching — all under one roof in the heart of Wigan.
+        </p>
+        <div class="flex flex-wrap gap-4">
+          <a href="/contact" class="btn-forge">Book your first session</a>
+          <a href="/services" class="btn-white">Explore services</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scroll indicator -->
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-50">
+      <span class="text-white text-xs tracking-widest uppercase">Scroll</span>
+      <svg class="w-4 h-4 text-white animate-bounce" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+      </svg>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       STATS BAR
+  ═══════════════════════════════════════════════════════════════ -->
+  <div class="bg-forge-orange py-8" aria-label="Key figures">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <div class="flex flex-wrap justify-between gap-6">
+        {stats.map(s => (
+          <div class="text-center flex-1 min-w-[100px]">
+            <p class="font-display font-800 text-3xl text-white leading-none tracking-wide">{s.num}</p>
+            <p class="text-xs text-white/75 tracking-widest uppercase mt-1">{s.label}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       FEATURE STRIP
+  ═══════════════════════════════════════════════════════════════ -->
+  <div class="bg-forge-sand-d border-b border-forge-steel/10 py-5">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <div class="flex flex-wrap gap-6 justify-between">
+        {features.map(f => (
+          <div class="flex items-center gap-2 text-sm text-forge-steel/70 font-medium">
+            <span class="text-base" aria-hidden="true">{f.icon}</span>
+            {f.label}
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       SERVICES
+  ═══════════════════════════════════════════════════════════════ -->
+  <section class="py-24 bg-forge-sand" aria-labelledby="services-heading">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+
+      <div class="section-header reveal">
+        <p class="eyebrow">What we offer</p>
+        <h2 id="services-heading" class="font-display text-display-lg text-forge-steel mt-3 mb-4">
+          Six ways to recover &amp; perform
+        </h2>
+        <p class="text-forge-steel/60 text-lg max-w-xl">
+          Every service, every specialist, every piece of equipment — built to get you performing at your best.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 stagger">
+        {services.map(service => (
+          <a
+            href={`/${service.slug}`}
+            class="group relative overflow-hidden rounded-xl bg-forge-steel shadow-card hover:shadow-card-hover transition-all duration-300 hover:-translate-y-1 block"
+          >
+            <!-- Image -->
+            <div class="relative aspect-[4/3] overflow-hidden">
+              <img
+                src={service.img}
+                alt={service.imgAlt}
+                width="600" height="450"
+                loading="lazy"
+                decoding="async"
+                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+              />
+              <!-- Gradient overlay -->
+              <div class="absolute inset-0 bg-card-overlay"></div>
+              <!-- Orange bottom bar -->
+              <div class="absolute bottom-0 left-0 right-0 h-1 bg-forge-orange scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
+            </div>
+
+            <!-- Content -->
+            <div class="p-6">
+              <h3 class="font-display font-700 text-lg tracking-wide text-white uppercase mb-2 group-hover:text-forge-orange transition-colors duration-200">
+                {service.name}
+              </h3>
+              <p class="text-white/60 text-sm leading-relaxed">
+                {service.desc}
+              </p>
+              <div class="mt-4 flex items-center gap-2 text-forge-orange text-xs font-bold tracking-widest uppercase">
+                Learn more
+                <svg class="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-1" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+                </svg>
+              </div>
+            </div>
+          </a>
+        ))}
+      </div>
+
+      <div class="mt-12 text-center reveal">
+        <a href="/services" class="btn-forge">View all services &amp; pricing</a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       WHY FORGE — SPLIT SECTION
+  ═══════════════════════════════════════════════════════════════ -->
+  <section class="py-24 bg-white" aria-labelledby="why-heading">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <div class="grid lg:grid-cols-2 gap-16 items-center">
+
+        <!-- Image collage -->
+        <div class="relative reveal">
+          <div class="grid grid-cols-2 gap-4">
+            <img
+              src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=500&q=80&auto=format&fit=crop"
+              alt="Male athlete training at Forge Wellness"
+              width="500" height="600"
+              loading="lazy"
+              class="rounded-xl w-full aspect-[3/4] object-cover object-top shadow-card"
+            />
+            <div class="flex flex-col gap-4 mt-8">
+              <img
+                src="https://images.unsplash.com/photo-1595078475328-1ab05d0a6a0e?w=500&q=80&auto=format&fit=crop"
+                alt="Female athlete using recovery equipment"
+                width="500" height="300"
+                loading="lazy"
+                class="rounded-xl w-full aspect-square object-cover shadow-card"
+              />
+              <div class="rounded-xl bg-forge-orange p-6 text-white text-center">
+                <p class="font-display font-800 text-4xl leading-none">4.9★</p>
+                <p class="text-sm text-white/80 mt-1 tracking-wide uppercase font-semibold">Google Rating</p>
+              </div>
+            </div>
+          </div>
+          <!-- Floating badge -->
+          <div class="absolute -bottom-5 -left-4 bg-forge-steel rounded-xl px-5 py-4 shadow-forge-lg hidden lg:block">
+            <p class="font-display font-800 text-2xl text-white">1,200+</p>
+            <p class="text-xs text-white/60 tracking-widest uppercase">Active Members</p>
+          </div>
+        </div>
+
+        <!-- Text -->
+        <div class="reveal">
+          <p class="eyebrow mb-4">Who we are</p>
+          <h2 id="why-heading" class="font-display text-display-lg text-forge-steel mt-3 mb-6">
+            Built for Wigan athletes
+          </h2>
+          <p class="text-forge-steel/70 text-lg leading-relaxed mb-6">
+            Forge was built with one idea: serious athletes in Wigan deserve world-class recovery,
+            not an afterthought corner with one foam roller. We've brought together eight specialist
+            practitioners under one roof to give you everything you need to train hard and recover harder.
+          </p>
+          <p class="text-forge-steel/70 leading-relaxed mb-8">
+            From rugby league players and marathon runners to weekend cyclists and desk workers — if
+            performance matters to you, Forge was built for you.
+          </p>
+
+          <ul class="space-y-4 mb-10">
+            {[
+              'CIMSPA-registered physiotherapy team',
+              'Medical-grade cold water immersion pools',
+              'No contracts — book as you go',
+              '8 Market Place, Wigan town centre',
+            ].map(item => (
+              <li class="flex items-start gap-3 text-forge-steel/80">
+                <svg class="w-5 h-5 text-forge-orange mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                </svg>
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+
+          <a href="/about" class="btn-forge">Meet the team</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       TESTIMONIALS
+  ═══════════════════════════════════════════════════════════════ -->
+  <section class="py-24 bg-forge-sand-d" aria-labelledby="reviews-heading">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+
+      <div class="section-header reveal text-center">
+        <p class="eyebrow justify-center">Member reviews</p>
+        <h2 id="reviews-heading" class="font-display text-display-lg text-forge-steel mt-3 mb-4">
+          What our members say
+        </h2>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8 stagger">
+        {testimonials.map(t => (
+          <div class="bg-white rounded-2xl p-8 shadow-card hover:shadow-card-hover transition-shadow duration-300 relative">
+            <!-- Large quote mark -->
+            <div class="absolute top-6 right-6 text-forge-orange/10 font-display font-900 text-8xl leading-none select-none" aria-hidden="true">"</div>
+
+            <!-- Stars -->
+            <div class="flex gap-1 mb-4" aria-label="5 stars">
+              {Array(5).fill(0).map(() => (
+                <svg class="w-4 h-4 text-forge-orange" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                </svg>
+              ))}
+            </div>
+
+            <blockquote class="text-forge-steel/75 leading-relaxed mb-6 relative z-10">
+              "{t.text}"
+            </blockquote>
+
+            <div class="flex items-center gap-3">
+              <img
+                src={t.img}
+                alt={t.name}
+                width="44" height="44"
+                loading="lazy"
+                class="w-11 h-11 rounded-full object-cover"
+              />
+              <div>
+                <p class="font-semibold text-forge-steel text-sm">{t.name}</p>
+                <p class="text-xs text-forge-steel/50">{t.role}</p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       CTA BANNER
+  ═══════════════════════════════════════════════════════════════ -->
+  <section class="relative py-24 overflow-hidden bg-forge-steel" aria-label="Call to action">
+
+    <!-- Background image -->
+    <img
+      src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=1400&q=75&auto=format&fit=crop"
+      alt=""
+      aria-hidden="true"
+      width="1400" height="600"
+      loading="lazy"
+      class="absolute inset-0 w-full h-full object-cover opacity-20"
+    />
+
+    <div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 text-center">
+      <p class="eyebrow justify-center text-forge-orange mb-4">Get started today</p>
+      <h2 class="font-display font-900 text-white uppercase leading-none mb-6" style="font-size:clamp(2.2rem,5vw,4rem);">
+        No contracts.<br />No pressure.
+      </h2>
+      <p class="text-white/70 text-lg max-w-lg mx-auto mb-10">
+        Book a tour, try a recovery session, or start a gym membership. See for yourself why Forge is Wigan's highest-rated wellness centre.
+      </p>
+      <div class="flex flex-wrap gap-4 justify-center">
+        <a href="/contact" class="btn-forge">Book your first session</a>
+        <a href="/services" class="btn-white">View all services</a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       LOCATION PREVIEW
+  ═══════════════════════════════════════════════════════════════ -->
+  <section class="py-20 bg-white" aria-labelledby="location-heading">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div class="reveal">
+          <p class="eyebrow mb-4">Find us</p>
+          <h2 id="location-heading" class="font-display text-display-lg text-forge-steel mt-3 mb-4">
+            Right in the heart<br/>of Wigan
+          </h2>
+          <address class="not-italic text-forge-steel/70 leading-relaxed mb-8 space-y-2">
+            <p class="font-semibold text-forge-steel">Forge Wellness &amp; Recovery</p>
+            <p>8 Market Place<br />Wigan WN1 1PG</p>
+            <p class="mt-4">
+              <a href="tel:+441942386400" class="font-semibold text-forge-orange hover:text-forge-orange-d transition-colors">01942 386 400</a>
+            </p>
+          </address>
+          <ul class="space-y-2 text-sm mb-8">
+            {[
+              ['Mon – Fri', '06:00 – 22:00'],
+              ['Saturday', '07:00 – 20:00'],
+              ['Sunday', '08:00 – 18:00'],
+            ].map(([day, hours]) => (
+              <li class="flex gap-4">
+                <span class="text-forge-steel/50 w-24 flex-shrink-0">{day}</span>
+                <span class="font-semibold text-forge-steel">{hours}</span>
+              </li>
+            ))}
+          </ul>
+          <a href="/contact" class="btn-forge">Get directions</a>
+        </div>
+
+        <!-- Map placeholder with real image -->
+        <div class="rounded-2xl overflow-hidden shadow-card reveal h-72 lg:h-auto">
+          <img
+            src="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=800&q=80&auto=format&fit=crop"
+            alt="Wigan town centre aerial view"
+            width="800" height="500"
+            loading="lazy"
+            class="w-full h-full object-cover"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+</Layout>

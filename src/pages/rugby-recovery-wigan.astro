@@ -1,0 +1,61 @@
+---
+import LandingPage from '../components/LandingPage.astro';
+---
+
+<LandingPage
+  title="Rugby Recovery Wigan | Forge Wellness & Recovery"
+  description="Specialist rugby recovery programme in Wigan at Forge Wellness. Ice bath, compression, massage and physio combined. Used by rugby league players across the North West."
+  canonical="https://forge-wellness.netlify.app/rugby-recovery-wigan"
+  slug="rugby-recovery-wigan"
+  serviceName="rugby recovery"
+  heroHeading="Rugby recovery<br/><span class='text-forge-orange'>in Wigan</span>"
+  heroSub="Specialist recovery programme designed for rugby league and union players. Ice bath, compression, massage and physio — in one dedicated session."
+  heroImg="https://images.unsplash.com/photo-1546519638405-a9b39614dadb?w=1400&q=80&auto=format&fit=crop"
+  heroImgAlt="Rugby player in recovery session at Forge Wellness Wigan"
+  breadcrumb="Rugby Recovery Wigan"
+  whatIsIt={{
+    heading: "Recovery built for contact sport",
+    body: "Rugby league and union players face a unique recovery challenge: heavy physical contact, high running loads and rapid turnaround between matches. The Forge Rugby Recovery programme combines cold water immersion, pneumatic compression, sports massage and physiotherapy screening in a single 90-minute session. Developed with Super League-level practitioners, it is the most comprehensive post-match recovery protocol available in the North West.",
+  }}
+  benefits={[
+    { icon: '🧊', title: 'Cold water immersion', desc: 'Reduce contact-sport inflammation with 10 minutes in our precision-temperature cold plunge pools.' },
+    { icon: '⚡', title: 'Full-leg compression', desc: '30 minutes of pneumatic compression to flush lactic acid and reduce swelling from heavy running loads.' },
+    { icon: '💆', title: 'Targeted soft tissue', desc: 'Sports massage focused on the areas most taxed by rugby — hammstrings, quads, hips, shoulders and neck.' },
+    { icon: '🩺', title: 'Injury screening', desc: 'A quick physio screen to identify any emerging niggles before they become injuries that cost you matches.' },
+    { icon: '📋', title: 'Recovery tracking', desc: 'Your recovery data logged session-by-session so you can track trends and spot when your body needs more.' },
+    { icon: '🏉', title: 'Club rates available', desc: 'We offer group rates and club partnerships for amateur and semi-professional teams in the Wigan area.' },
+  ]}
+  pricing={[
+    {
+      name: 'Post-match session',
+      price: '£75',
+      period: '/session',
+      features: ['Cold water immersion', 'Full-leg compression', '30-min sports massage', 'Injury screen', '90 min total'],
+    },
+    {
+      name: 'Season package',
+      price: '£250',
+      period: '/month',
+      features: ['4 x full recovery sessions', 'Physio priority access', 'Weekly injury screening', 'Nutrition guidance', 'Recovery app access', 'Club invoice available'],
+      featured: true,
+    },
+    {
+      name: 'Club group rate',
+      price: '£55',
+      period: '/player/session',
+      features: ['Groups of 5 or more', 'Full recovery stack', 'Dedicated time slot', 'Club invoice available'],
+    },
+  ]}
+  faq={[
+    { q: 'What level of rugby players do you work with?', a: 'Everyone from grassroots and amateur club players to semi-professional athletes. We work with several amateur clubs in the Wigan and Greater Manchester area.' },
+    { q: 'When should I book a recovery session?', a: 'The optimal time for post-match recovery is within 2–6 hours after a game. We have early morning and evening slots available to accommodate match schedules.' },
+    { q: 'Do you offer club partnerships?', a: 'Yes. We offer group rates and can arrange dedicated team slots on a weekly or fortnightly basis for clubs of all sizes. Contact us for a package quote.' },
+    { q: 'Is the injury screen a full physio assessment?', a: 'No — it is a 15-minute screening to flag emerging concerns. If anything needs further attention, your physio will recommend a full assessment appointment.' },
+    { q: 'Can I book individual services rather than the full recovery stack?', a: 'Yes. Each service — cold water immersion, compression, massage, physio — is available individually. The rugby recovery package is a convenient bundle at a reduced combined rate.' },
+  ]}
+  relatedServices={[
+    { href: '/ice-bath-wigan', name: 'Cold Water Immersion', img: 'https://images.unsplash.com/photo-1706197884196-eb9a8ea96d41?w=400&q=80&auto=format&fit=crop', imgAlt: 'Ice bath' },
+    { href: '/sports-massage-wigan', name: 'Sports Massage', img: 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=400&q=80&auto=format&fit=crop', imgAlt: 'Sports massage' },
+    { href: '/physiotherapy-wigan', name: 'Physiotherapy', img: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=400&q=80&auto=format&fit=crop', imgAlt: 'Physiotherapy' },
+  ]}
+/>

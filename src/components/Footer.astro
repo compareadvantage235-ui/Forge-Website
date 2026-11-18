@@ -1,0 +1,115 @@
+---
+const services = [
+  { href: '/gym-membership-wigan',    label: 'Gym Membership'       },
+  { href: '/personal-trainer-wigan',  label: 'Personal Training'    },
+  { href: '/sports-massage-wigan',    label: 'Sports Massage'       },
+  { href: '/physiotherapy-wigan',     label: 'Physiotherapy'        },
+  { href: '/ice-bath-wigan',          label: 'Ice Bath'             },
+  { href: '/infrared-sauna-wigan',    label: 'Infrared Sauna'       },
+];
+
+const year = new Date().getFullYear();
+---
+
+<footer class="bg-forge-steel text-white/70">
+  <!-- Main footer grid -->
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 pt-16 pb-10">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-12 border-b border-white/10">
+
+      <!-- Brand col -->
+      <div class="lg:col-span-1">
+        <a href="/" class="flex items-center gap-2.5 mb-4 group">
+          <svg width="30" height="30" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+            <rect width="32" height="32" rx="6" fill="#C4511A"/>
+            <path d="M6 22h20v2H6zM9 20V14l3-4h8l3 4v6" stroke="white" stroke-width="1.8" stroke-linejoin="round" fill="none"/>
+            <rect x="13" y="8" width="6" height="4" rx="1" fill="white"/>
+          </svg>
+          <span class="font-display font-800 text-lg tracking-widest uppercase text-white leading-none">
+            FORGE <span class="text-forge-orange">WR</span>
+          </span>
+        </a>
+        <p class="text-sm leading-relaxed mb-5">
+          Wigan's premier gym and sports recovery centre.
+          8 Market Place, Wigan WN1 1PG.
+        </p>
+        <a href="tel:+441942386400" class="text-sm font-semibold text-white hover:text-forge-orange transition-colors">
+          01942 386 400
+        </a>
+        <br />
+        <a href="mailto:hello@forgewellness.co.uk" class="text-sm text-white/60 hover:text-forge-orange transition-colors">
+          hello@forgewellness.co.uk
+        </a>
+
+        <!-- Social icons -->
+        <div class="flex gap-4 mt-6">
+          <a href="#" aria-label="Instagram" class="w-9 h-9 rounded-lg bg-white/10 hover:bg-forge-orange transition-colors flex items-center justify-center">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/>
+            </svg>
+          </a>
+          <a href="#" aria-label="Facebook" class="w-9 h-9 rounded-lg bg-white/10 hover:bg-forge-orange transition-colors flex items-center justify-center">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+            </svg>
+          </a>
+          <a href="#" aria-label="TikTok" class="w-9 h-9 rounded-lg bg-white/10 hover:bg-forge-orange transition-colors flex items-center justify-center">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V9.07a8.16 8.16 0 0 0 4.77 1.52V7.14a4.85 4.85 0 0 1-1-.45z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Services col -->
+      <div>
+        <h5 class="text-xs font-bold tracking-widest uppercase text-white/40 mb-5">Services</h5>
+        <ul class="space-y-3">
+          {services.map(s => (
+            <li>
+              <a href={s.href} class="text-sm hover:text-white hover:translate-x-1 transition-all inline-block">
+                {s.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Company col -->
+      <div>
+        <h5 class="text-xs font-bold tracking-widest uppercase text-white/40 mb-5">Company</h5>
+        <ul class="space-y-3">
+          <li><a href="/about"   class="text-sm hover:text-white transition-colors">About Forge</a></li>
+          <li><a href="/about#team" class="text-sm hover:text-white transition-colors">Our Team</a></li>
+          <li><a href="/contact" class="text-sm hover:text-white transition-colors">Contact Us</a></li>
+          <li><a href="/contact" class="text-sm hover:text-white transition-colors">Opening Hours</a></li>
+          <li><a href="/contact" class="text-sm hover:text-white transition-colors">Directions</a></li>
+        </ul>
+      </div>
+
+      <!-- Visit / hours col -->
+      <div>
+        <h5 class="text-xs font-bold tracking-widest uppercase text-white/40 mb-5">Opening Hours</h5>
+        <ul class="space-y-2 text-sm">
+          <li class="flex justify-between"><span>Mon – Fri</span><span class="text-white font-semibold">06:00 – 22:00</span></li>
+          <li class="flex justify-between"><span>Saturday</span><span class="text-white font-semibold">07:00 – 20:00</span></li>
+          <li class="flex justify-between"><span>Sunday</span><span class="text-white font-semibold">08:00 – 18:00</span></li>
+        </ul>
+        <div class="mt-6">
+          <a href="/contact" class="btn-forge text-xs py-2.5 px-5 w-full justify-center">
+            Book a Session
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer bottom -->
+    <div class="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-white/35">
+      <p>&copy; {year} Forge Wellness &amp; Recovery Ltd. All rights reserved.</p>
+      <div class="flex gap-4">
+        <a href="/privacy-policy" class="hover:text-white/60 transition-colors">Privacy Policy</a>
+        <a href="#" class="hover:text-white/60 transition-colors">Accessibility</a>
+        <a href="/sitemap.xml" rel="nofollow" class="hover:text-white/60 transition-colors">Sitemap</a>
+      </div>
+    </div>
+  </div>
+</footer>

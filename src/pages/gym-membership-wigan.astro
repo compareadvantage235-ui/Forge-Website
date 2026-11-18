@@ -1,0 +1,61 @@
+---
+import LandingPage from '../components/LandingPage.astro';
+---
+
+<LandingPage
+  title="Gym Membership Wigan | Forge Wellness & Recovery"
+  description="Join Forge Wellness gym in Wigan. State-of-the-art equipment, strength racks, no contracts. Gym membership from £35/month. Town centre location."
+  canonical="https://forge-wellness.netlify.app/gym-membership-wigan"
+  slug="gym-membership-wigan"
+  serviceName="gym membership"
+  heroHeading="Wigan's highest-rated<br/><span class='text-forge-orange'>gym membership</span>"
+  heroSub="State-of-the-art equipment, no queues, no contracts. Train how you want, when you want — right in Wigan town centre."
+  heroImg="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1400&q=80&auto=format&fit=crop"
+  heroImgAlt="Man training on strength floor at Forge Wellness Wigan"
+  breadcrumb="Gym Membership Wigan"
+  whatIsIt={{
+    heading: 'A gym built for performance, not Instagram',
+    body: 'Forge is Wigan\'s premier performance gym. Our strength floor is built around barbells, plates and racks — not gimmicks. Combined with our full cardio suite, functional fitness zone and exclusive access to our recovery facilities, a Forge gym membership gives you everything serious athletes need under one roof. Town centre location with parking nearby.',
+  }}
+  benefits={[
+    { icon: '🏋️', title: 'Full strength floor', desc: 'Power racks, Olympic bars, dumbbells to 60kg, cable machines and more. Everything you need for progressive strength training.' },
+    { icon: '🏃', title: 'Cardio suite', desc: 'Treadmills, assault bikes, row ergs and SkiErg machines. High-performance cardio for every fitness level.' },
+    { icon: '🧊', title: 'Recovery included', desc: 'Members get discounted access to all recovery services — ice baths, infrared sauna, compression therapy and more.' },
+    { icon: '📍', title: 'Town centre location', desc: '8 Market Place, Wigan WN1 1PG. Walk from the train station. Parking available nearby at Market Place car park.' },
+    { icon: '🕕', title: 'Open 7 days', desc: 'Open from 6am Monday to Friday, 7am Saturday and 8am Sunday. Flexible hours to fit your training around your life.' },
+    { icon: '🤝', title: 'No contracts', desc: 'Month-to-month memberships only. No annual contracts, no sign-up fees, no penalties for leaving. Just great training.' },
+  ]}
+  pricing={[
+    {
+      name: 'Standard',
+      price: '£35',
+      period: '/month',
+      features: ['Full gym access', '7-day access', 'App & class booking', 'Guest pass x1/month'],
+    },
+    {
+      name: 'Performance',
+      price: '£55',
+      period: '/month',
+      features: ['Everything in Standard', '10% off all recovery', '2 PT sessions/month', 'Priority booking', 'Guest pass x2/month'],
+      featured: true,
+    },
+    {
+      name: 'Pay as you go',
+      price: '£10',
+      period: '/visit',
+      features: ['Full gym access', 'No commitment', 'Available any day', 'Recovery add-ons available'],
+    },
+  ]}
+  faq={[
+    { q: 'Is there a joining fee?', a: 'No. There is no joining fee and no annual contract. You pay month-to-month and can cancel any time with 30 days notice.' },
+    { q: 'Do I need to be a member to use the recovery facilities?', a: 'No. All recovery services — ice baths, infrared sauna, sports massage, physiotherapy — can be booked independently without a gym membership.' },
+    { q: 'Can I bring a guest?', a: 'Yes. Standard members get one guest pass per month. Performance members get two. Additional guest passes can be purchased for £8 each.' },
+    { q: 'Is there parking nearby?', a: 'Yes. Market Place multi-storey car park is a 2-minute walk. The gym is also a 5-minute walk from Wigan Wallgate and Wigan North Western train stations.' },
+    { q: 'Do you offer student or concession rates?', a: 'Yes. We offer a discounted student rate of £28/month with a valid student ID. Contact us for details on other concession rates.' },
+  ]}
+  relatedServices={[
+    { href: '/personal-trainer-wigan', name: 'Personal Training', img: 'https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=400&q=80&auto=format&fit=crop', imgAlt: 'Personal trainer coaching athlete' },
+    { href: '/ice-bath-wigan', name: 'Cold Water Immersion', img: 'https://images.unsplash.com/photo-1706197884196-eb9a8ea96d41?w=400&q=80&auto=format&fit=crop', imgAlt: 'Ice bath recovery' },
+    { href: '/infrared-sauna-wigan', name: 'Infrared Sauna', img: 'https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=400&q=80&auto=format&fit=crop', imgAlt: 'Infrared sauna' },
+  ]}
+/>

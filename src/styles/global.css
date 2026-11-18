@@ -1,0 +1,107 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Inter:wght@400;500;600;700&display=swap');
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-forge-sand text-forge-steel font-body;
+    font-size: 1rem;
+    line-height: 1.65;
+  }
+
+  h1, h2, h3, h4, h5 {
+    @apply font-display font-bold uppercase tracking-wide;
+    text-wrap: balance;
+  }
+
+  img {
+    @apply block max-w-full;
+  }
+
+  :focus-visible {
+    outline: 2px solid theme('colors.forge.orange');
+    outline-offset: 3px;
+  }
+}
+
+@layer components {
+  /* Eyebrow label */
+  .eyebrow {
+    @apply text-forge-orange text-xs font-bold tracking-widest uppercase flex items-center gap-3;
+  }
+  .eyebrow::before {
+    content: '';
+    @apply block w-8 h-0.5 bg-forge-orange flex-shrink-0;
+  }
+
+  /* Section header */
+  .section-header {
+    @apply mb-16;
+  }
+  .section-header h2 {
+    @apply mt-3 mb-4;
+  }
+
+  /* Primary button */
+  .btn-forge {
+    @apply inline-flex items-center gap-2 px-7 py-3.5
+           bg-forge-orange text-white font-display font-bold text-sm tracking-widest uppercase
+           rounded transition-all duration-200
+           hover:bg-forge-orange-d hover:shadow-forge-md hover:-translate-y-0.5
+           focus-visible:ring-2 focus-visible:ring-forge-orange focus-visible:ring-offset-2;
+  }
+
+  /* Ghost/outline button */
+  .btn-ghost {
+    @apply inline-flex items-center gap-2 px-7 py-3.5
+           border-2 border-forge-orange text-forge-orange font-display font-bold text-sm tracking-widest uppercase
+           rounded transition-all duration-200
+           hover:bg-forge-orange hover:text-white hover:shadow-forge-md hover:-translate-y-0.5;
+  }
+
+  /* White button (on dark backgrounds) */
+  .btn-white {
+    @apply inline-flex items-center gap-2 px-7 py-3.5
+           bg-white text-forge-steel font-display font-bold text-sm tracking-widest uppercase
+           rounded transition-all duration-200
+           hover:bg-forge-sand hover:shadow-card hover:-translate-y-0.5;
+  }
+
+  /* Reveal on scroll */
+  .reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Stagger children */
+  .stagger > * {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+  .stagger.visible > *:nth-child(1) { transition-delay: 0ms;   opacity: 1; transform: none; }
+  .stagger.visible > *:nth-child(2) { transition-delay: 80ms;  opacity: 1; transform: none; }
+  .stagger.visible > *:nth-child(3) { transition-delay: 160ms; opacity: 1; transform: none; }
+  .stagger.visible > *:nth-child(4) { transition-delay: 240ms; opacity: 1; transform: none; }
+  .stagger.visible > *:nth-child(5) { transition-delay: 320ms; opacity: 1; transform: none; }
+  .stagger.visible > *:nth-child(6) { transition-delay: 400ms; opacity: 1; transform: none; }
+}
+
+@layer utilities {
+  .text-balance { text-wrap: balance; }
+  .bg-hero-overlay { background: linear-gradient(135deg, rgba(44,58,74,0.96) 0%, rgba(44,58,74,0.80) 55%, rgba(44,58,74,0.45) 100%); }
+  .bg-card-overlay { background: linear-gradient(to top, rgba(0,0,0,0.80) 0%, rgba(0,0,0,0.0) 55%); }
+}
