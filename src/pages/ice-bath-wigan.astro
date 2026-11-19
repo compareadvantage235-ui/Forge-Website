@@ -1,0 +1,61 @@
+---
+import LandingPage from '../components/LandingPage.astro';
+---
+
+<LandingPage
+  title="Ice Bath Wigan | Cold Water Immersion | Forge Wellness"
+  description="Cold water immersion and ice baths in Wigan at Forge Wellness. Medical-grade plunge pools, temperature controlled. Book from £15. No membership needed."
+  canonical="https://forge-wellness.netlify.app/ice-bath-wigan"
+  slug="ice-bath-wigan"
+  serviceName="cold water immersion"
+  heroHeading={`Cold water immersion<br/><span class="text-forge-orange">in Wigan</span>`}
+  heroSub="Medical-grade cold plunge pools at precisely controlled temperatures. Used by elite athletes worldwide to accelerate recovery, reduce inflammation and build mental resilience."
+  heroImg="https://images.unsplash.com/photo-1706197884196-eb9a8ea96d41?w=1400&q=80&auto=format&fit=crop"
+  heroImgAlt="Athlete in cold water ice bath recovery session at Forge Wellness Wigan"
+  breadcrumb="Ice Bath Wigan"
+  whatIsIt={{
+    heading: 'Elite recovery. Now in Wigan.',
+    body: 'Cold water immersion (CWI) involves submerging the body in cold water between 8–15°C for a set duration. Used by professional sports teams worldwide, CWI triggers vasoconstriction and reduces post-exercise inflammation, accelerating muscle recovery and reducing soreness. At Forge, our plunge pools maintain precise temperatures and are cleaned and monitored to medical standards. Sessions are guided by qualified staff.',
+  }}
+  benefits={[
+    { icon: '🏃', title: 'Faster recovery', desc: 'Significantly reduces delayed onset muscle soreness (DOMS), getting you back to training sooner.' },
+    { icon: '🔥', title: 'Reduces inflammation', desc: 'Cold water triggers vasoconstriction, flushing inflammatory by-products out of muscle tissue.' },
+    { icon: '🧠', title: 'Mental resilience', desc: 'Regular cold exposure has been shown to reduce anxiety, improve mood and build psychological resilience.' },
+    { icon: '💤', title: 'Better sleep', desc: 'Post-exercise cold immersion has been linked to improved sleep quality and reduced cortisol levels.' },
+    { icon: '⚡', title: 'Immune support', desc: 'Regular cold water exposure may stimulate the immune system and increase white blood cell production.' },
+    { icon: '🎯', title: 'Precise temperatures', desc: 'Our pools are maintained at exact temperatures and monitored throughout the day for safety and consistency.' },
+  ]}
+  pricing={[
+    {
+      name: 'Single session',
+      price: '£15',
+      period: '/session',
+      features: ['30-minute session', 'Towels provided', 'Guided introduction', 'Changing facilities'],
+    },
+    {
+      name: 'Recovery bundle',
+      price: '£50',
+      period: '/4 sessions',
+      features: ['4 x 30-minute sessions', 'All towels included', 'Progress tracking', 'Free changing facilities', 'Valid 60 days'],
+      featured: true,
+    },
+    {
+      name: 'Members rate',
+      price: '£10',
+      period: '/session',
+      features: ['Gym members only', '20% discount', 'Unlimited booking', 'Bundle also available'],
+    },
+  ]}
+  faq={[
+    { q: 'Do I need to be a gym member to book an ice bath?', a: 'No. Cold water immersion sessions can be booked by anyone, with no gym membership required. Single sessions are £15.' },
+    { q: 'What temperature are the pools?', a: 'Our standard cold plunge pools are maintained at 10–12°C. We also offer a warmer introductory option at 15°C for first-timers.' },
+    { q: 'How long is a session?', a: 'Sessions are 30 minutes. This includes a guided introduction, your immersion (typically 3–10 minutes depending on experience), and recovery time.' },
+    { q: 'Is it safe if I have a heart condition?', a: 'Cold water immersion is not recommended for people with certain cardiovascular conditions, Raynaud\'s disease, or during pregnancy. Please consult your GP before booking if you have any health concerns.' },
+    { q: 'What should I bring?', a: 'Just yourself and your swimwear. Towels, robes and changing facilities are all provided. We recommend eating at least 1 hour before your session.' },
+  ]}
+  relatedServices={[
+    { href: '/infrared-sauna-wigan', name: 'Infrared Sauna', img: 'https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=400&q=80&auto=format&fit=crop', imgAlt: 'Infrared sauna' },
+    { href: '/sports-massage-wigan', name: 'Sports Massage', img: 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=400&q=80&auto=format&fit=crop', imgAlt: 'Sports massage' },
+    { href: '/compression-therapy-wigan', name: 'Compression Therapy', img: 'https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=400&q=80&auto=format&fit=crop', imgAlt: 'Compression therapy' },
+  ]}
+/>
