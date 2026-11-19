@@ -1,0 +1,61 @@
+---
+import LandingPage from '../components/LandingPage.astro';
+---
+
+<LandingPage
+  title="HYROX Training Wigan | Forge Wellness & Recovery"
+  description="HYROX training in Wigan at Forge Wellness. Wigan's only HYROX-certified preparation facility. Structured training plans, race simulation, certified coaching. Book now."
+  canonical="https://forge-wellness.netlify.app/hyrox-training-wigan"
+  slug="hyrox-training-wigan"
+  serviceName="HYROX training"
+  heroHeading={`HYROX training<br/><span class="text-forge-orange">in Wigan</span>`}
+  heroSub="Wigan's only certified HYROX preparation facility. Structured training plans, race simulation and coaching from HYROX-certified athletes."
+  heroImg="https://images.unsplash.com/photo-1518611012118-696072aa579a?w=1400&q=80&auto=format&fit=crop"
+  heroImgAlt="Athlete doing HYROX functional fitness training at Forge Wellness Wigan"
+  breadcrumb="HYROX Training Wigan"
+  whatIsIt={{
+    heading: "The fastest growing fitness race in the world — built for Wigan",
+    body: "HYROX is a global fitness race combining 8km of running with 8 functional fitness stations. It's one of the fastest-growing competitive fitness formats in the world, with events in Manchester, London and beyond. At Forge, our HYROX-certified coaches design race-specific training plans, run simulation sessions and prepare you for the specific demands of the event — not just generic fitness.",
+  }}
+  benefits={[
+    { icon: '🏆', title: 'HYROX-certified coaches', desc: 'Forge coaches are HYROX-certified, with direct experience racing and training for the event format.' },
+    { icon: '📊', title: 'Race simulation sessions', desc: 'Train the exact format — running, ski erg, sled push, burpee broad jumps and all 8 stations.' },
+    { icon: '📋', title: 'Bespoke training plans', desc: 'A periodised training plan designed around your race date, current fitness and weakness profile.' },
+    { icon: '🏃', title: 'Running programming', desc: 'HYROX is 50% running. We develop your aerobic base and running efficiency alongside functional strength.' },
+    { icon: '💪', title: 'Strength & conditioning', desc: 'Build the specific strength needed for HYROX stations — sandbag lunges, wall balls, sled push power.' },
+    { icon: '🧊', title: 'Recovery integration', desc: 'Race prep includes full recovery planning — ice baths, massage, nutrition — to arrive at race day fresh.' },
+  ]}
+  pricing={[
+    {
+      name: 'Single session',
+      price: '£50',
+      period: '/session',
+      features: ['HYROX-specific workout', 'Coach-led session', 'Station technique coaching', 'Post-session review'],
+    },
+    {
+      name: '12-week race prep',
+      price: '£299',
+      period: '/programme',
+      features: ['Full 12-week periodised plan', '4 x coach-led sessions', 'App-based home programme', 'Race-day nutrition plan', 'WhatsApp coaching support', '1 race simulation session'],
+      featured: true,
+    },
+    {
+      name: 'Team entry (2–4)',
+      price: '£38',
+      period: '/person/session',
+      features: ['2–4 people per group', 'Coach-led session', 'Team race simulation', 'Race strategy coaching'],
+    },
+  ]}
+  faq={[
+    { q: 'Do I need to have done HYROX before?', a: 'No. We work with complete beginners and experienced HYROX athletes. Your coach will assess your current fitness and design a plan accordingly.' },
+    { q: 'What fitness level do I need to start?', a: 'You should be comfortable running 5km and have some basic gym experience. If you are very new to fitness, we recommend starting with a few months of general training first.' },
+    { q: 'How long before my race should I start training?', a: 'Ideally 12–16 weeks. This gives enough time to build aerobic capacity, develop station technique and peak at the right time.' },
+    { q: 'Do you help with race registration?', a: 'Yes. We can advise on upcoming HYROX events in the North West and help you register. Manchester regularly hosts HYROX events.' },
+    { q: 'Is the training just for HYROX, or will it improve my general fitness?', a: 'Both. The training methodology used for HYROX — combining endurance and functional strength — produces excellent all-round fitness improvements regardless of whether you race.' },
+  ]}
+  relatedServices={[
+    { href: '/gym-membership-wigan', name: 'Gym Membership', img: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=400&q=80&auto=format&fit=crop', imgAlt: 'Gym floor' },
+    { href: '/personal-trainer-wigan', name: 'Personal Training', img: 'https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=400&q=80&auto=format&fit=crop', imgAlt: 'Personal training' },
+    { href: '/sports-nutrition-wigan', name: 'Sports Nutrition', img: 'https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=400&q=80&auto=format&fit=crop', imgAlt: 'Sports nutrition' },
+  ]}
+/>
