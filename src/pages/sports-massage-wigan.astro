@@ -1,0 +1,46 @@
+---
+import LandingPage from '../components/LandingPage.astro';
+---
+
+<LandingPage
+  title="Sports Massage Wigan | Forge Wellness & Recovery"
+  description="CIMSPA-registered sports massage therapists in Wigan. Deep tissue massage, trigger point therapy. From £45. No membership needed. Book online."
+  canonical="https://forge-wellness.netlify.app/sports-massage-wigan"
+  slug="sports-massage-wigan"
+  serviceName="sports massage"
+  heroLine1="Sports massage"
+  heroLine2="in Wigan"
+  heroSub="Deep tissue and sports-specific massage to accelerate recovery, improve flexibility and prevent injury — delivered by CIMSPA-registered therapists."
+  heroImg="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=1400&q=80&auto=format&fit=crop"
+  heroImgAlt="Sports massage therapist treating athlete at Forge Wellness Wigan"
+  breadcrumb="Sports Massage Wigan"
+  whatIsIt={{
+    heading: 'Massage built for athletes, not spas',
+    body: 'Sports massage at Forge is a clinical treatment designed to maintain and improve athletic performance. Our therapists use deep tissue techniques, trigger point therapy, myofascial release and assisted stretching to target specific problem areas. Sessions are tailored to your sport, training load and injury history.',
+  }}
+  benefits={[
+    { icon: '🏃', title: 'Accelerated recovery', desc: 'Break down lactic acid build-up and reduce DOMS, getting you back to training sooner after hard sessions.' },
+    { icon: '🎯', title: 'Injury prevention', desc: 'Regular sports massage identifies and addresses soft tissue restrictions before they become injuries.' },
+    { icon: '💪', title: 'Improved flexibility', desc: 'Increase range of motion through targeted myofascial release and assisted stretching techniques.' },
+    { icon: '🧠', title: 'Performance boost', desc: 'Reduced muscle tension and improved circulation directly translates to better movement quality and power output.' },
+    { icon: '😌', title: 'Stress reduction', desc: 'The parasympathetic response triggered by massage reduces cortisol and promotes recovery at a hormonal level.' },
+    { icon: '📋', title: 'Full case history', desc: 'Every new client receives a full intake assessment covering injury history, training load and current goals.' },
+  ]}
+  pricing={[
+    { name: '45 min', price: '£45', period: '/session', features: ['Targeted area treatment', 'Intake assessment (new clients)', 'Post-session advice', 'Rebooking discount'] },
+    { name: '60 min', price: '£58', period: '/session', features: ['Full-body treatment', 'Intake assessment (new clients)', 'Stretching protocol', 'Post-session report', 'Rebooking discount'], featured: true },
+    { name: '90 min', price: '£80', period: '/session', features: ['Full-body + focus area', 'Intake assessment', 'Assisted stretching', 'Detailed report', 'Rebooking discount'] },
+  ]}
+  faq={[
+    { q: 'Do I need to be a gym member?', a: 'No. Sports massage is available to everyone with no gym membership required.' },
+    { q: 'How often should I have a sports massage?', a: 'For regular athletes, monthly or fortnightly massages are typical. During heavy training blocks, weekly sessions are beneficial. Your therapist will advise based on your training load.' },
+    { q: 'Should I eat before my massage?', a: 'Avoid heavy meals for 2 hours before your session. Light snacks are fine.' },
+    { q: 'What should I wear?', a: 'Comfortable, loose clothing. For lower body treatments, shorts are ideal. Towels are provided for draping.' },
+    { q: 'Is it painful?', a: 'Sports massage uses more pressure than a relaxation massage. It can be uncomfortable in areas of tension but should never be unbearable. Always tell your therapist if the pressure needs adjusting.' },
+  ]}
+  relatedServices={[
+    { href: '/physiotherapy-wigan', name: 'Physiotherapy', img: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=400&q=80&auto=format&fit=crop', imgAlt: 'Physiotherapy' },
+    { href: '/ice-bath-wigan', name: 'Cold Water Immersion', img: 'https://images.unsplash.com/photo-1706197884196-eb9a8ea96d41?w=400&q=80&auto=format&fit=crop', imgAlt: 'Ice bath' },
+    { href: '/compression-therapy-wigan', name: 'Compression Therapy', img: 'https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=400&q=80&auto=format&fit=crop', imgAlt: 'Compression' },
+  ]}
+/>
