@@ -3,6 +3,7 @@ import { sized, srcset } from '../lib/img';
 import Layout from '../layouts/Layout.astro';
 import { SITE } from '../data/site';
 import JsonLd from './JsonLd.astro';
+import Icon from './Icon.astro';
 
 interface Props {
   title: string;
@@ -70,7 +71,7 @@ const breadcrumbs = [
   <JsonLd slot="schema" data={faqSchema} />
 
   <!-- Hero -->
-  <section class="relative bg-forge-steel py-20 overflow-hidden" aria-labelledby="page-heading">
+  <section class="grain relative bg-forge-steel py-24 lg:py-28 overflow-hidden" aria-labelledby="page-heading">
     <img
       src={sized(heroImg, 960, 35)}
       srcset={srcset(heroImg, 1600, 35)}
@@ -81,7 +82,7 @@ const breadcrumbs = [
       loading="eager"
       decoding="async"
       fetchpriority="high"
-      class="absolute inset-0 w-full h-full object-cover opacity-20"
+      class="absolute inset-0 w-full h-full object-cover opacity-30"
     />
     <div class="absolute inset-0 bg-hero-overlay"></div>
     <div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6">
@@ -139,9 +140,11 @@ const breadcrumbs = [
       </div>
       <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 stagger">
         {benefits.map(b => (
-          <div class="bg-white rounded-xl p-6 shadow-card hover:shadow-card-hover transition-shadow">
-            <div class="text-3xl mb-4" aria-hidden="true">{b.icon}</div>
-            <h3 class="font-display font-700 uppercase tracking-wide text-forge-steel mb-2">{b.title}</h3>
+          <div class="group relative bg-white rounded-xl p-7 shadow-card hover:shadow-card-hover hover:-translate-y-1 transition-all duration-300 border-t-2 border-transparent hover:border-forge-orange">
+            <div class="w-12 h-12 rounded-lg bg-forge-steel text-forge-orange-l flex items-center justify-center mb-5 transition-colors duration-300 group-hover:bg-forge-orange group-hover:text-white">
+              <Icon name={b.icon} class="w-6 h-6" />
+            </div>
+            <h3 class="font-display font-700 uppercase tracking-wide text-lg text-forge-steel mb-2">{b.title}</h3>
             <p class="text-forge-steel/80 text-sm leading-relaxed">{b.desc}</p>
           </div>
         ))}
@@ -178,7 +181,7 @@ const breadcrumbs = [
                 </li>
               ))}
             </ul>
-            <a href="/contact/" class={plan.featured ? 'btn-white justify-center' : 'btn-forge justify-center'}>
+            <a href="/contact/" class={plan.featured ? 'btn-light justify-center' : 'btn-forge justify-center'}>
               Book now
             </a>
           </div>
@@ -258,7 +261,7 @@ const breadcrumbs = [
         No contract required. Book a single session and see the difference for yourself.
       </p>
       <div class="flex flex-wrap gap-4 justify-center">
-        <a href="/contact/" class="btn-white">Book {serviceName}</a>
+        <a href="/contact/" class="btn-light">Book {serviceName}</a>
         <a href={SITE.phoneHref} class="inline-flex items-center gap-2 text-white font-semibold hover:underline transition-colors">
           <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"/></svg>
           {SITE.phone}
