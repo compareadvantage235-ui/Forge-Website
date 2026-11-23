@@ -19,7 +19,15 @@ export default {
       },
       fontFamily: {
         display: ['"Barlow Condensed"', '"Arial Narrow"', 'sans-serif'],
-        body:    ['"Inter"', 'system-ui', 'sans-serif'],
+        body:    ['"Inter Variable"', '"Inter"', 'system-ui', 'sans-serif'],
+      },
+      // Numeric weight classes used across the site (font-600 … font-900).
+      // Tailwind only ships named ones (font-semibold etc.), so these were silently ignored before.
+      fontWeight: {
+        '600': '600',
+        '700': '700',
+        '800': '800',
+        '900': '900',
       },
       fontSize: {
         'display-xl': ['clamp(3.2rem,8vw,6rem)',   { lineHeight: '0.95', letterSpacing: '0.01em' }],

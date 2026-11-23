@@ -1,21 +1,81 @@
 ---
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
+import { SITE, SAME_AS } from '../data/site';
+import { sized } from '../lib/img';
+import JsonLd from '../components/JsonLd.astro';
+// Self-hosted fonts (no request to Google = no render-blocking, no third-party cookies).
+import '@fontsource/barlow-condensed/600.css';
+import '@fontsource/barlow-condensed/700.css';
+import '@fontsource/barlow-condensed/800.css';
+import '@fontsource/barlow-condensed/900.css';
+import '@fontsource-variable/inter';
 import '../styles/global.css';
+// The two font files every page needs above the fold, fetched early so the
+// headline never re-flows when the web font arrives (prevents layout shift).
+import barlow900 from '@fontsource/barlow-condensed/files/barlow-condensed-latin-900-normal.woff2?url';
+import interLatin from '@fontsource-variable/inter/files/inter-latin-wght-normal.woff2?url';
 
 interface Props {
   title: string;
   description: string;
   canonical?: string;
   ogImage?: string;
+  /** Hero image to fetch early (it is the Largest Contentful Paint element). */
+  preloadImage?: { srcset: string; sizes: string };
+  /** Force noindex on this page even when the site allows indexing (e.g. the 404 page). */
+  noindex?: boolean;
+  /** Breadcrumb trail after "Home", e.g. [{ name: 'Services', path: '/services/' }]. Adds BreadcrumbList schema. */
+  breadcrumbs?: { name: string; path: string }[];
 }
+
+// Canonical = site address (astro.config.mjs `site`) + this page's path, always
+// ending in "/" because that is the URL Cloudflare Pages actually serves
+// (/about redirects to /about/, and a canonical must never point at a redirect).
+const path = Astro.url.pathname.endsWith('/') ? Astro.url.pathname : `${Astro.url.pathname}/`;
+const autoCanonical = new URL(path, Astro.site).href;
+
+// Default social-share image: 1200×630 crop of the gym-floor photo (swap for a branded image later).
+const defaultOgImage = sized('https://images.unsplash.com/photo-1534438327276-14e5300c3a48', 1200, 80, '1200:630');
 
 const {
   title,
   description,
-  canonical = Astro.url.href,
-  ogImage = 'https://forge-wellness.netlify.app/og-home.jpg',
+  canonical = autoCanonical,
+  ogImage = defaultOgImage,
+  preloadImage,
+  noindex = false,
+  breadcrumbs = [],
 } = Astro.props;
+
+// ---- Structured data (schema.org JSON-LD) ----
+const siteUrl = new URL('/', Astro.site).href;
+const S = SITE.schema;
+
+// Organisation: on every page. Other schema points back to it via its @id.
+const organization = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  '@id': `${siteUrl}#organization`,
+  name: SITE.name,
+  url: siteUrl,
+  logo: S.logo,
+  telephone: S.telephone,
+  ...(SAME_AS.length ? { sameAs: SAME_AS } : {}),
+};
+
+const breadcrumbList = breadcrumbs.length
+  ? {
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [{ name: 'Home', path: '/' }, ...breadcrumbs].map((b, i) => ({
+        '@type': 'ListItem',
+        position: i + 1,
+        name: b.name,
+        item: new URL(b.path, Astro.site).href,
+      })),
+    }
+  : null;
 ---
 
 <!doctype html>
@@ -27,9 +87,10 @@ const {
 
     <title>{title}</title>
     <meta name="description" content={description} />
-    <meta name="robots" content="index, follow" />
-    <link rel="canonical" href={canonical} />
-    <link rel="alternate" hreflang="en-gb" href={canonical} />
+    <!-- Controlled by SITE.allowIndexing in src/data/site.ts -->
+    <meta name="robots" content={SITE.allowIndexing && !noindex ? 'index, follow' : 'noindex, nofollow'} />
+    {!noindex && <link rel="canonical" href={canonical} />}
+    {!noindex && <link rel="alternate" hreflang="en-gb" href={canonical} />}
 
     <!-- Open Graph -->
     <meta property="og:type"        content="website" />
@@ -46,28 +107,49 @@ const {
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image"       content={ogImage} />
 
-    <!-- Fonts preconnect -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Inter:wght@400;500;600;700&display=swap"
-    />
+    <!-- Structured data -->
+    <JsonLd data={organization} />
+    {breadcrumbList && <JsonLd data={breadcrumbList} />}
+    <slot name="schema" />
+
+    <link rel="preload" href={barlow900} as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href={interLatin} as="font" type="font/woff2" crossorigin />
+
+    <!-- Images come from Unsplash: open the connection early -->
+    <link rel="preconnect" href="https://images.unsplash.com" />
+    {preloadImage && (
+      <link rel="preload" as="image" imagesrcset={preloadImage.srcset} imagesizes={preloadImage.sizes} fetchpriority="high" />
+    )}
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
-    <!-- Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-1D5H5MS0JR"></script>
-    <script>
+    <!-- Analytics: Google's 68 KB script loads only after the visitor first
+         scrolls, taps, clicks or presses a key, so it never slows the first paint.
+         TODO: gate behind a cookie-consent banner (UK GDPR) before going live. -->
+    <script is:inline>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
       gtag('config', 'G-1D5H5MS0JR');
+      (function () {
+        var loaded = false;
+        function load() {
+          if (loaded) return; loaded = true;
+          var s = document.createElement('script');
+          s.async = true;
+          s.src = 'https://www.googletagmanager.com/gtag/js?id=G-1D5H5MS0JR';
+          document.head.appendChild(s);
+        }
+        ['scroll', 'pointerdown', 'keydown', 'touchstart'].forEach(function (e) {
+          addEventListener(e, load, { once: true, passive: true });
+        });
+      })();
     </script>
   </head>
 
   <body class="min-h-screen flex flex-col">
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[100] focus:bg-white focus:text-forge-steel focus:px-4 focus:py-2 focus:rounded-lg focus:font-semibold">Skip to main content</a>
     <Nav />
     <main id="main-content" class="flex-1">
       <slot />

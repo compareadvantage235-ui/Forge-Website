@@ -1,5 +1,15 @@
 ---
+import { sized, srcset } from '../lib/img';
 import Layout from '../layouts/Layout.astro';
+import { SITE } from '../data/site';
+import FAQ from '../components/FAQ.astro';
+
+const faq = [
+  { q: `Which recovery service is right for me?`, a: `It depends on your goal. Choose sports massage for tight or sore muscles, physiotherapy if you have an injury or pain, an ice bath for soreness after hard training, and an infrared sauna to relax and unwind. If you are not sure, contact us and we will point you to the right service.` },
+  { q: `Can I combine services in one visit?`, a: `Yes. Many people pair services, for example a sports massage followed by compression therapy, or an infrared sauna followed by an ice bath. Our rugby recovery session combines several services in one booking.` },
+  { q: `I have an injury. Where should I start?`, a: `Start with a physiotherapy assessment. Your physio will diagnose the problem and tell you which other services, such as sports massage or personal training, will help your recovery.` },
+  { q: `How do I book a session?`, a: `Send us a message through the contact page or call ${SITE.phone}. We will confirm your booking and answer any questions.` },
+];
 
 const services = [
   {
@@ -7,119 +17,124 @@ const services = [
     name: 'Gym & Strength Floor',
     desc: 'State-of-the-art equipment, strength racks, and a performance-focused floor built for serious training. No queues, no clutter — just results.',
     img: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=700&q=80&auto=format&fit=crop',
-    imgAlt: 'Man training on strength floor at Forge Wellness',
-    price: 'From £35/mo',
-    badges: ['No contract option', 'Open 7 days'],
+    imgAlt: 'Dumbbell racks and strength equipment on a gym floor',
+    price: 'From [price]',
+    badges: ['No contract option', '[Opening days]'],
   },
   {
     slug: 'personal-trainer-wigan',
     name: 'Personal Training',
     desc: 'Expert coaches who build programmes around your goals — not generic templates. One-to-one or small group sessions available.',
     img: 'https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=700&q=80&auto=format&fit=crop',
-    imgAlt: 'Personal trainer coaching athlete at Forge Wellness',
-    price: 'From £50/session',
-    badges: ['Goal-focused', 'Qualified coaches'],
+    imgAlt: 'Personal trainer coaching a client through a floor exercise',
+    price: 'From [price]',
+    badges: ['Goal-focused', '[Qualification]'],
   },
   {
     slug: 'sports-massage-wigan',
     name: 'Sports Massage',
-    desc: 'Deep tissue and sports-specific massage to accelerate recovery, improve flexibility and prevent injury — delivered by CIMSPA-registered therapists.',
-    img: 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=700&q=80&auto=format&fit=crop',
-    imgAlt: 'Sports massage therapist treating athlete',
-    price: 'From £45/session',
-    badges: ['CIMSPA registered', '45–90 min sessions'],
+    desc: 'Deep tissue and sports-specific massage to accelerate recovery, improve flexibility and prevent injury — delivered by [accreditation] therapists.',
+    img: 'https://images.unsplash.com/photo-1540205895360-4ad4cffb3aa8?w=700&q=80&auto=format&fit=crop',
+    imgAlt: 'Sports massage therapist working on an athlete’s leg',
+    price: 'From [price]',
+    badges: ['[Accreditation]', '45–90 min sessions'],
   },
   {
     slug: 'physiotherapy-wigan',
     name: 'Physiotherapy',
-    desc: 'CIMSPA-registered physios diagnosing and treating injuries to get you back performing. Sports injuries, chronic pain, and post-surgical rehab.',
-    img: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=700&q=80&auto=format&fit=crop',
-    imgAlt: 'Physiotherapist treating knee injury',
-    price: 'From £60/session',
-    badges: ['HCPC registered', 'Full injury assessment'],
+    desc: '[Accreditation] physios diagnosing and treating injuries to get you back performing. Sports injuries, chronic pain, and post-surgical rehab.',
+    img: 'https://images.unsplash.com/photo-1649751361457-01d3a696c7e6?w=700&q=80&auto=format&fit=crop',
+    imgAlt: 'Physiotherapist assessing a patient’s leg on a treatment table',
+    price: 'From [price]',
+    badges: ['[Accreditation]', 'Full injury assessment'],
   },
   {
     slug: 'ice-bath-wigan',
     name: 'Cold Water Immersion',
-    desc: 'Medical-grade cold plunge pools at precisely controlled temperatures. Used by elite athletes worldwide for recovery, inflammation, and mental resilience.',
-    img: 'https://images.unsplash.com/photo-1706197884196-eb9a8ea96d41?w=700&q=80&auto=format&fit=crop',
-    imgAlt: 'Athlete in cold water ice bath recovery',
-    price: 'From £15/session',
+    desc: 'Cold plunge pools at precisely controlled temperatures. Used by elite athletes worldwide for recovery, inflammation, and mental resilience.',
+    img: 'https://images.unsplash.com/photo-1681980016814-0bac16721969?w=700&q=80&auto=format&fit=crop',
+    imgAlt: 'Man sitting in an ice bath full of ice',
+    price: 'From [price]',
     badges: ['Temperature controlled', 'No membership needed'],
   },
   {
     slug: 'infrared-sauna-wigan',
     name: 'Infrared Sauna',
     desc: 'Full-spectrum infrared therapy to detox, reduce inflammation, improve sleep and aid muscle recovery. Private pods with personalised temperature control.',
-    img: 'https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=700&q=80&auto=format&fit=crop',
-    imgAlt: 'Woman relaxing in infrared sauna pod',
-    price: 'From £20/session',
+    img: 'https://images.unsplash.com/photo-1605614307370-f7a1e58ae751?w=700&q=80&auto=format&fit=crop',
+    imgAlt: 'Woman relaxing on a wooden sauna bench',
+    price: 'From [price]',
     badges: ['Private pods', 'Full-spectrum IR'],
   },
   {
     slug: 'hyrox-training-wigan',
     name: 'HYROX Training',
-    desc: 'Wigan\'s only certified HYROX preparation facility. Structured training plans, race simulation and coaching from HYROX-certified athletes.',
-    img: 'https://images.unsplash.com/photo-1518611012118-696072aa579a?w=700&q=80&auto=format&fit=crop',
-    imgAlt: 'Athlete doing HYROX functional fitness training',
-    price: 'From £50/session',
-    badges: ['HYROX certified', 'Race prep focus'],
+    desc: 'Structured HYROX training plans, race simulation and coaching from [qualification] coaches.',
+    img: 'https://images.unsplash.com/photo-1757147517623-ee9a76c9ead2?w=700&q=80&auto=format&fit=crop',
+    imgAlt: 'Athletes competing at a HYROX fitness race',
+    price: 'From [price]',
+    badges: ['[Qualification]', 'Race prep focus'],
   },
   {
     slug: 'compression-therapy-wigan',
     name: 'Compression Therapy',
     desc: 'Pneumatic compression sleeves for the legs, hips and arms. Used by professional sports teams to flush lactic acid and accelerate muscle recovery.',
-    img: 'https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=700&q=80&auto=format&fit=crop',
-    imgAlt: 'Athlete using compression therapy recovery boots',
-    price: 'From £12/session',
+    img: 'https://images.unsplash.com/photo-1761839257789-20147513121a?w=700&q=80&auto=format&fit=crop',
+    imgAlt: 'Athletes resting their legs on a running track after training',
+    price: 'From [price]',
     badges: ['Add-on available', '30 min sessions'],
   },
   {
     slug: 'rugby-recovery-wigan',
     name: 'Rugby Recovery',
     desc: 'Specialist recovery programme designed for rugby league and union players. Ice bath, compression, massage and physio — in one dedicated session.',
-    img: 'https://images.unsplash.com/photo-1546519638405-a9b39614dadb?w=700&q=80&auto=format&fit=crop',
-    imgAlt: 'Rugby player in recovery session',
-    price: 'From £75/session',
+    img: 'https://images.unsplash.com/photo-1480099225005-2513c8947aec?w=700&q=80&auto=format&fit=crop',
+    imgAlt: 'Rugby players packing down in a scrum',
+    price: 'From [price]',
     badges: ['Full recovery stack', 'Club rates available'],
   },
   {
     slug: 'sports-nutrition-wigan',
     name: 'Sports Nutrition',
-    desc: 'Expert nutrition coaching tailored to your sport, body composition and performance goals. Evidence-based plans from qualified sports nutritionists.',
+    desc: 'Expert nutrition coaching tailored to your sport, body composition and performance goals. Evidence-based plans from a [accreditation] sports nutritionist.',
     img: 'https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=700&q=80&auto=format&fit=crop',
-    imgAlt: 'Sports nutritionist reviewing meal plan',
-    price: 'From £80/consultation',
-    badges: ['Qualified nutritionist', 'Ongoing plan support'],
+    imgAlt: 'Healthy meal bowl with eggs, avocado and fresh vegetables',
+    price: 'From [price]',
+    badges: ['[Accreditation]', 'Ongoing plan support'],
   },
 ];
 ---
 
 <Layout
+  preloadImage={{ srcset: srcset("https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=1400&q=75&auto=format&fit=crop", 1600, 35), sizes: "50vw" }}
+  breadcrumbs={[{ name: 'Services', path: '/services/' }]}
   title="Services & Pricing | Forge Wellness & Recovery Wigan"
-  description="All services at Forge Wellness & Recovery Wigan. Gym membership, personal training, sports massage, physiotherapy, ice baths, infrared sauna and more. View pricing."
-  canonical="https://forge-wellness.netlify.app/services"
+  description="Gym and recovery services in Wigan: personal training, sports massage, physiotherapy, ice baths, infrared sauna, HYROX training and more."
 >
 
   <!-- Page hero -->
   <section class="relative bg-forge-steel py-20 overflow-hidden">
     <img
-      src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=1400&q=75&auto=format&fit=crop"
+      src={sized("https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=1400&q=75&auto=format&fit=crop", 960, 35)}
+      srcset={srcset("https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=1400&q=75&auto=format&fit=crop", 1600, 35)}
+      sizes="50vw"
       alt=""
       aria-hidden="true"
       width="1400" height="400"
       loading="eager"
+      decoding="async"
+      fetchpriority="high"
       class="absolute inset-0 w-full h-full object-cover opacity-15"
     />
     <div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6">
-      <nav class="text-xs text-white/40 tracking-widest uppercase mb-6 flex gap-2 items-center" aria-label="Breadcrumb">
+      <nav class="text-xs text-white/60 tracking-widest uppercase mb-6 flex gap-2 items-center" aria-label="Breadcrumb">
         <a href="/" class="hover:text-white/70 transition-colors">Home</a>
         <span>/</span>
         <span class="text-white/70">Services</span>
       </nav>
-      <p class="eyebrow text-forge-orange mb-3">Everything under one roof</p>
+      <p class="eyebrow !text-white mb-3">Everything under one roof</p>
       <h1 class="font-display font-900 uppercase text-white leading-none mb-4" style="font-size:clamp(2.5rem,6vw,4.5rem);">
-        Services &amp; Pricing
+        Gym &amp; Recovery Services <span class="text-forge-orange-l">in Wigan</span>
       </h1>
       <p class="text-white/65 text-lg max-w-xl">
         No membership required for most services. Book what you need, when you need it.
@@ -133,13 +148,15 @@ const services = [
       <div class="grid md:grid-cols-2 gap-8 stagger">
         {services.map(service => (
           <a
-            href={`/${service.slug}`}
+            href={`/${service.slug}/`}
             class="group bg-white rounded-2xl overflow-hidden shadow-card hover:shadow-card-hover transition-all duration-300 hover:-translate-y-1 flex flex-col sm:flex-row"
           >
             <!-- Image -->
             <div class="relative w-full sm:w-48 flex-shrink-0 overflow-hidden">
               <img
-                src={service.img}
+                src={sized(service.img, 960, 65, '3:2')}
+                srcset={srcset(service.img, 960, 65, '3:2')}
+                sizes="(min-width: 640px) 192px, 100vw"
                 alt={service.imgAlt}
                 width="700" height="500"
                 loading="lazy"
@@ -154,7 +171,7 @@ const services = [
               <div>
                 <div class="flex flex-wrap gap-2 mb-3">
                   {service.badges.map(b => (
-                    <span class="text-xs font-bold tracking-widest uppercase bg-forge-orange/10 text-forge-orange rounded px-2.5 py-1">
+                    <span class="text-xs font-bold tracking-widest uppercase bg-forge-orange/10 text-forge-orange-d rounded px-2.5 py-1">
                       {b}
                     </span>
                   ))}
@@ -162,7 +179,7 @@ const services = [
                 <h2 class="font-display font-700 text-xl uppercase tracking-wide text-forge-steel mb-2 group-hover:text-forge-orange transition-colors">
                   {service.name}
                 </h2>
-                <p class="text-forge-steel/60 text-sm leading-relaxed">
+                <p class="text-forge-steel/80 text-sm leading-relaxed">
                   {service.desc}
                 </p>
               </div>
@@ -182,6 +199,8 @@ const services = [
     </div>
   </section>
 
+  <FAQ faq={faq} />
+
   <!-- CTA -->
   <section class="py-20 bg-forge-steel text-center">
     <div class="max-w-2xl mx-auto px-4 sm:px-6">
@@ -190,8 +209,8 @@ const services = [
       </h2>
       <p class="text-white/65 mb-8">Call us or drop in. Our team will help you find the right combination of services for your goals.</p>
       <div class="flex flex-wrap gap-4 justify-center">
-        <a href="/contact" class="btn-forge">Book a free consultation</a>
-        <a href="tel:+441942386400" class="btn-white">01942 386 400</a>
+        <a href="/contact/" class="btn-forge">Book a free consultation</a>
+        <a href={SITE.phoneHref} class="btn-white">{SITE.phone}</a>
       </div>
     </div>
   </section>

@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://forge-wellness.netlify.app/sitemap.xml

@@ -4,15 +4,14 @@ import LandingPage from '../components/LandingPage.astro';
 
 <LandingPage
   title="Infrared Sauna Wigan | Forge Wellness & Recovery"
-  description="Infrared sauna sessions in Wigan at Forge Wellness. Full-spectrum IR, private pods. From £20/session. Benefits for recovery, sleep and detox."
-  canonical="https://forge-wellness.netlify.app/infrared-sauna-wigan"
+  description="Infrared sauna sessions in Wigan at Forge Wellness. Private pods and gentle heat to ease sore muscles, help you relax and support better sleep."
   slug="infrared-sauna-wigan"
   serviceName="infrared sauna"
   heroLine1="Infrared sauna"
   heroLine2="in Wigan"
   heroSub="Full-spectrum infrared therapy to detox, reduce inflammation, improve sleep quality and aid muscle recovery. Private pods with personalised temperature control."
-  heroImg="https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=1400&q=80&auto=format&fit=crop"
-  heroImgAlt="Woman relaxing in infrared sauna pod at Forge Wellness Wigan"
+  heroImg="https://images.unsplash.com/photo-1605614307370-f7a1e58ae751?w=1400&q=80&auto=format&fit=crop"
+  heroImgAlt="Woman relaxing on a wooden sauna bench"
   breadcrumb="Infrared Sauna Wigan"
   whatIsIt={{
     heading: 'Recovery through heat — without the discomfort',
@@ -27,9 +26,9 @@ import LandingPage from '../components/LandingPage.astro';
     { icon: '🏠', title: 'Private pods', desc: 'All sessions are in private pods — just you, no shared spaces. Fully hygienically maintained between each use.' },
   ]}
   pricing={[
-    { name: 'Single session', price: '£20', period: '/session', features: ['30-minute session', 'Private pod', 'Towels provided', 'Pre/post water station'] },
-    { name: 'Monthly bundle', price: '£70', period: '/month', features: ['5 x 30-minute sessions', 'Private pod', 'Towels included', 'Members booking priority', 'Valid 30 days'], featured: true },
-    { name: 'Members rate', price: '£15', period: '/session', features: ['Gym members only', '25% discount', 'Same-day booking', 'Bundle also available'] },
+    { name: 'Single session', price: '[price]', period: '/session', features: ['30-minute session', 'Private pod', 'Towels provided', 'Pre/post water station'] },
+    { name: 'Monthly bundle', price: '[price]', period: '/month', features: ['5 x 30-minute sessions', 'Private pod', 'Towels included', 'Members booking priority', 'Valid 30 days'], featured: true },
+    { name: 'Members rate', price: '[price]', period: '/session', features: ['Gym members only', '[discount] discount', 'Same-day booking', 'Bundle also available'] },
   ]}
   faq={[
     { q: 'What temperature is the sauna?', a: 'Our infrared sauna pods operate between 45–65°C. This is significantly lower than traditional saunas (80–100°C) but produces a deeper sweat due to the infrared wavelengths.' },
@@ -37,10 +36,12 @@ import LandingPage from '../components/LandingPage.astro';
     { q: 'Is it safe during pregnancy?', a: 'Infrared sauna is not recommended during pregnancy. Please check with your GP if you are trying to conceive or have recently given birth.' },
     { q: 'Should I shower before or after?', a: 'We recommend showering after your session to rinse off sweat and toxins. A cold shower or ice bath directly after is an excellent contrast therapy combination.' },
     { q: 'Can I combine it with cold water immersion?', a: 'Absolutely — in fact we recommend it. Hot-cold contrast therapy (sauna followed by cold plunge) is one of the most effective recovery protocols used by professional athletes.' },
+    { q: `What is the difference between an infrared sauna and a traditional sauna?`, a: `A traditional sauna heats the air to around 80–100°C. An infrared sauna warms your body directly at a lower air temperature, usually 40–65°C, so many people find it easier to stay in for longer.` },
+    { q: `How often should I use an infrared sauna?`, a: `Most people use the sauna two to four times a week. Start with shorter sessions, drink plenty of water and build up as you get used to the heat.` },
   ]}
   relatedServices={[
-    { href: '/ice-bath-wigan', name: 'Cold Water Immersion', img: 'https://images.unsplash.com/photo-1706197884196-eb9a8ea96d41?w=400&q=80&auto=format&fit=crop', imgAlt: 'Ice bath' },
-    { href: '/compression-therapy-wigan', name: 'Compression Therapy', img: 'https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=400&q=80&auto=format&fit=crop', imgAlt: 'Compression therapy' },
-    { href: '/sports-massage-wigan', name: 'Sports Massage', img: 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=400&q=80&auto=format&fit=crop', imgAlt: 'Sports massage' },
+    { href: '/ice-bath-wigan/', name: 'Cold Water Immersion', img: 'https://images.unsplash.com/photo-1681980016814-0bac16721969?w=400&q=80&auto=format&fit=crop', imgAlt: 'Ice bath' },
+    { href: '/compression-therapy-wigan/', name: 'Compression Therapy', img: 'https://images.unsplash.com/photo-1761839257789-20147513121a?w=400&q=80&auto=format&fit=crop', imgAlt: 'Compression therapy' },
+    { href: '/sports-massage-wigan/', name: 'Sports Massage', img: 'https://images.unsplash.com/photo-1540205895360-4ad4cffb3aa8?w=400&q=80&auto=format&fit=crop', imgAlt: 'Sports massage' },
   ]}
 />

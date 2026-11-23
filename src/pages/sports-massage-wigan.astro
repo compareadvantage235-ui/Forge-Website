@@ -4,15 +4,14 @@ import LandingPage from '../components/LandingPage.astro';
 
 <LandingPage
   title="Sports Massage Wigan | Forge Wellness & Recovery"
-  description="CIMSPA-registered sports massage therapists in Wigan. Deep tissue massage, trigger point therapy. From £45. No membership needed. Book online."
-  canonical="https://forge-wellness.netlify.app/sports-massage-wigan"
+  description="Sports massage in Wigan. Deep tissue, trigger point and myofascial techniques to ease tight muscles, prevent injury and speed up recovery. Book online."
   slug="sports-massage-wigan"
   serviceName="sports massage"
   heroLine1="Sports massage"
   heroLine2="in Wigan"
-  heroSub="Deep tissue and sports-specific massage to accelerate recovery, improve flexibility and prevent injury — delivered by CIMSPA-registered therapists."
-  heroImg="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=1400&q=80&auto=format&fit=crop"
-  heroImgAlt="Sports massage therapist treating athlete at Forge Wellness Wigan"
+  heroSub="Deep tissue and sports-specific massage to accelerate recovery, improve flexibility and prevent injury — delivered by [accreditation] therapists."
+  heroImg="https://images.unsplash.com/photo-1540205895360-4ad4cffb3aa8?w=1400&q=80&auto=format&fit=crop"
+  heroImgAlt="Sports massage therapist working on an athlete’s leg"
   breadcrumb="Sports Massage Wigan"
   whatIsIt={{
     heading: 'Massage built for athletes, not spas',
@@ -27,9 +26,9 @@ import LandingPage from '../components/LandingPage.astro';
     { icon: '📋', title: 'Full case history', desc: 'Every new client receives a full intake assessment covering injury history, training load and current goals.' },
   ]}
   pricing={[
-    { name: '45 min', price: '£45', period: '/session', features: ['Targeted area treatment', 'Intake assessment (new clients)', 'Post-session advice', 'Rebooking discount'] },
-    { name: '60 min', price: '£58', period: '/session', features: ['Full-body treatment', 'Intake assessment (new clients)', 'Stretching protocol', 'Post-session report', 'Rebooking discount'], featured: true },
-    { name: '90 min', price: '£80', period: '/session', features: ['Full-body + focus area', 'Intake assessment', 'Assisted stretching', 'Detailed report', 'Rebooking discount'] },
+    { name: '45 min', price: '[price]', period: '/session', features: ['Targeted area treatment', 'Intake assessment (new clients)', 'Post-session advice', 'Rebooking discount'] },
+    { name: '60 min', price: '[price]', period: '/session', features: ['Full-body treatment', 'Intake assessment (new clients)', 'Stretching protocol', 'Post-session report', 'Rebooking discount'], featured: true },
+    { name: '90 min', price: '[price]', period: '/session', features: ['Full-body + focus area', 'Intake assessment', 'Assisted stretching', 'Detailed report', 'Rebooking discount'] },
   ]}
   faq={[
     { q: 'Do I need to be a gym member?', a: 'No. Sports massage is available to everyone with no gym membership required.' },
@@ -37,10 +36,12 @@ import LandingPage from '../components/LandingPage.astro';
     { q: 'Should I eat before my massage?', a: 'Avoid heavy meals for 2 hours before your session. Light snacks are fine.' },
     { q: 'What should I wear?', a: 'Comfortable, loose clothing. For lower body treatments, shorts are ideal. Towels are provided for draping.' },
     { q: 'Is it painful?', a: 'Sports massage uses more pressure than a relaxation massage. It can be uncomfortable in areas of tension but should never be unbearable. Always tell your therapist if the pressure needs adjusting.' },
+    { q: `What is the difference between sports massage and deep tissue massage?`, a: `Deep tissue massage is one technique used within sports massage. This type of massage is tailored to your sport and training, and may combine deep tissue work with trigger point therapy, stretching and myofascial release.` },
+    { q: `Should I have a sports massage before or after an event?`, a: `Both can help. A lighter massage a few days before an event can loosen tight muscles, and a massage 24–48 hours after can help reduce soreness. Avoid a deep massage the day before a race.` },
   ]}
   relatedServices={[
-    { href: '/physiotherapy-wigan', name: 'Physiotherapy', img: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=400&q=80&auto=format&fit=crop', imgAlt: 'Physiotherapy' },
-    { href: '/ice-bath-wigan', name: 'Cold Water Immersion', img: 'https://images.unsplash.com/photo-1706197884196-eb9a8ea96d41?w=400&q=80&auto=format&fit=crop', imgAlt: 'Ice bath' },
-    { href: '/compression-therapy-wigan', name: 'Compression Therapy', img: 'https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=400&q=80&auto=format&fit=crop', imgAlt: 'Compression' },
+    { href: '/physiotherapy-wigan/', name: 'Physiotherapy', img: 'https://images.unsplash.com/photo-1649751361457-01d3a696c7e6?w=400&q=80&auto=format&fit=crop', imgAlt: 'Physiotherapy' },
+    { href: '/ice-bath-wigan/', name: 'Cold Water Immersion', img: 'https://images.unsplash.com/photo-1681980016814-0bac16721969?w=400&q=80&auto=format&fit=crop', imgAlt: 'Ice bath' },
+    { href: '/compression-therapy-wigan/', name: 'Compression Therapy', img: 'https://images.unsplash.com/photo-1761839257789-20147513121a?w=400&q=80&auto=format&fit=crop', imgAlt: 'Compression' },
   ]}
 />

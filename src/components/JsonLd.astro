@@ -1,0 +1,12 @@
+---
+// Outputs one block of schema.org structured data (JSON-LD) for Google.
+// Usage: <JsonLd data={{ '@context': 'https://schema.org', '@type': 'Thing', ... }} />
+interface Props {
+  data: Record<string, unknown>;
+}
+const { data } = Astro.props;
+// Escape "<" so text inside the JSON can never close the <script> tag early.
+const json = JSON.stringify(data).replace(/</g, '\\u003c');
+---
+
+<script type="application/ld+json" set:html={json} />

@@ -4,19 +4,18 @@ import LandingPage from '../components/LandingPage.astro';
 
 <LandingPage
   title="Physiotherapy Wigan | Sports Physio | Forge Wellness"
-  description="HCPC-registered sports physiotherapists in Wigan. Injury diagnosis, rehabilitation and return-to-sport. From £60. Book online at Forge Wellness."
-  canonical="https://forge-wellness.netlify.app/physiotherapy-wigan"
+  description="Sports physiotherapy in Wigan. Injury assessment, diagnosis and rehabilitation plans to get you back to sport. Self-refer, no GP referral needed."
   slug="physiotherapy-wigan"
   serviceName="physiotherapy"
   heroLine1="Sports physiotherapy"
   heroLine2="in Wigan"
-  heroSub="HCPC-registered physios diagnosing and treating injuries to get you back performing. Sports injuries, chronic pain and post-surgical rehab."
-  heroImg="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=1400&q=80&auto=format&fit=crop"
-  heroImgAlt="Physiotherapist treating knee injury at Forge Wellness Wigan"
+  heroSub="[Accreditation] physios diagnosing and treating injuries to get you back performing. Sports injuries, chronic pain and post-surgical rehab."
+  heroImg="https://images.unsplash.com/photo-1649751361457-01d3a696c7e6?w=1400&q=80&auto=format&fit=crop"
+  heroImgAlt="Physiotherapist assessing a patient’s leg on a treatment table"
   breadcrumb="Physiotherapy Wigan"
   whatIsIt={{
     heading: 'Physio that gets you back to sport',
-    body: 'Physiotherapy at Forge is delivered by HCPC-registered practitioners specialising in sports and musculoskeletal injuries. We use a thorough assessment process to diagnose the root cause of pain and injury, then build a rehabilitation programme designed to restore full function. All our physios work closely with the broader Forge team — strength coaches, massage therapists and nutrition specialists — to deliver joined-up care.',
+    body: 'Physiotherapy at Forge is delivered by [accreditation] practitioners specialising in sports and musculoskeletal injuries. We use a thorough assessment process to diagnose the root cause of pain and injury, then build a rehabilitation programme designed to restore full function. All our physios work closely with the broader Forge team — strength coaches, massage therapists and nutrition specialists — to deliver joined-up care.',
   }}
   benefits={[
     { icon: '🩺', title: 'Full injury diagnosis', desc: 'A thorough clinical assessment to understand the root cause of pain, not just the symptoms.' },
@@ -24,12 +23,12 @@ import LandingPage from '../components/LandingPage.astro';
     { icon: '🏃', title: 'Return-to-sport focus', desc: `We don't just get you pain-free — we get you back to full performance, safely and sustainably.` },
     { icon: '🤝', title: 'MDT approach', desc: 'Your physio works alongside our coaches, massage therapists and nutritionist for genuinely holistic care.' },
     { icon: '📱', title: 'App-based home programme', desc: 'Your rehab exercises available via the Forge app, with video demonstrations and progress tracking.' },
-    { icon: '🎓', title: 'HCPC registered', desc: 'All physiotherapists at Forge are registered with the Health & Care Professions Council and hold postgraduate sports qualifications.' },
+    { icon: '🎓', title: '[Accreditation]', desc: '[Physiotherapist registrations and qualifications].' },
   ]}
   pricing={[
-    { name: 'Initial assessment', price: '£60', period: '/session', features: ['Full clinical assessment', 'Injury diagnosis', 'Written treatment plan', 'Home exercise programme'] },
-    { name: 'Follow-up', price: '£50', period: '/session', features: ['Treatment session', 'Progress review', 'Programme update', 'Discharge planning'], featured: true },
-    { name: 'Rehab package', price: '£220', period: '/5 sessions', features: ['Initial + 4 follow-ups', 'Full rehab programme', 'App-based exercises', 'Discharge report'] },
+    { name: 'Initial assessment', price: '[price]', period: '/session', features: ['Full clinical assessment', 'Injury diagnosis', 'Written treatment plan', 'Home exercise programme'] },
+    { name: 'Follow-up', price: '[price]', period: '/session', features: ['Treatment session', 'Progress review', 'Programme update', 'Discharge planning'], featured: true },
+    { name: 'Rehab package', price: '[price]', period: '/5 sessions', features: ['Initial + 4 follow-ups', 'Full rehab programme', 'App-based exercises', 'Discharge report'] },
   ]}
   faq={[
     { q: 'Do I need a GP referral?', a: 'No. You can self-refer directly to our physiotherapy service. We will write to your GP with our findings if appropriate.' },
@@ -37,10 +36,12 @@ import LandingPage from '../components/LandingPage.astro';
     { q: 'How long are sessions?', a: 'Initial assessments are 60 minutes. Follow-up sessions are 45 minutes.' },
     { q: 'Can I claim on health insurance?', a: 'Many private health insurers cover physiotherapy. Contact us with your insurer details and we will confirm coverage before your appointment.' },
     { q: 'How many sessions will I need?', a: 'This varies considerably by injury. Your physio will give you an estimated number of sessions at your initial assessment, based on your diagnosis and goals.' },
+    { q: `What is the difference between physiotherapy and sports massage?`, a: `Physiotherapy diagnoses and treats injuries and pain, with a rehab plan that fixes the cause. Sports massage relieves muscle tension and helps you recover from training. If you are injured or unsure what is wrong, start with physiotherapy.` },
+    { q: `What should I wear to my physio appointment?`, a: `Wear loose, comfortable clothing so your physio can see and move the area being treated. Shorts are best for knee, hip and leg problems, and a vest top for shoulder and back problems.` },
   ]}
   relatedServices={[
-    { href: '/sports-massage-wigan', name: 'Sports Massage', img: 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=400&q=80&auto=format&fit=crop', imgAlt: 'Sports massage' },
-    { href: '/personal-trainer-wigan', name: 'Personal Training', img: 'https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=400&q=80&auto=format&fit=crop', imgAlt: 'Personal training' },
-    { href: '/sports-nutrition-wigan', name: 'Sports Nutrition', img: 'https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=400&q=80&auto=format&fit=crop', imgAlt: 'Nutrition' },
+    { href: '/sports-massage-wigan/', name: 'Sports Massage', img: 'https://images.unsplash.com/photo-1540205895360-4ad4cffb3aa8?w=400&q=80&auto=format&fit=crop', imgAlt: 'Sports massage' },
+    { href: '/personal-trainer-wigan/', name: 'Personal Training', img: 'https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=400&q=80&auto=format&fit=crop', imgAlt: 'Personal training' },
+    { href: '/sports-nutrition-wigan/', name: 'Sports Nutrition', img: 'https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=400&q=80&auto=format&fit=crop', imgAlt: 'Nutrition' },
   ]}
 />

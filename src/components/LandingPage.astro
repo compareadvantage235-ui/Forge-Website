@@ -1,10 +1,13 @@
 ---
+import { sized, srcset } from '../lib/img';
 import Layout from '../layouts/Layout.astro';
+import { SITE } from '../data/site';
+import JsonLd from './JsonLd.astro';
 
 interface Props {
   title: string;
   description: string;
-  canonical: string;
+  canonical?: string; // optional: Layout builds it from the page URL
   slug: string;
   serviceName: string;
   heroLine1: string;
@@ -27,37 +30,76 @@ const {
   whatIsIt, benefits, pricing, faq,
   relatedServices, breadcrumb,
 } = Astro.props;
+
+// ---- Structured data for this service page ----
+const siteUrl = new URL('/', Astro.site).href;
+const pageUrl = new URL(`/${slug}/`, Astro.site).href;
+
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  '@id': `${pageUrl}#service`,
+  name: `${heroLine1} ${heroLine2}`,
+  serviceType: serviceName,
+  description,
+  url: pageUrl,
+  image: sized(heroImg, 1200, 80),
+  provider: { '@id': `${siteUrl}#organization` },
+  areaServed: { '@type': 'City', name: 'Wigan' },
+};
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faq.map(({ q, a }) => ({
+    '@type': 'Question',
+    name: q,
+    acceptedAnswer: { '@type': 'Answer', text: a },
+  })),
+};
+
+// Matches the visible breadcrumb: Home / Services / {breadcrumb}
+const breadcrumbs = [
+  { name: 'Services', path: '/services/' },
+  { name: breadcrumb, path: `/${slug}/` },
+];
 ---
 
-<Layout {title} {description} {canonical}>
+<Layout {title} {description} {canonical} {breadcrumbs} preloadImage={{ srcset: srcset(heroImg, 1600, 35), sizes: "50vw" }}>
+  <JsonLd slot="schema" data={serviceSchema} />
+  <JsonLd slot="schema" data={faqSchema} />
 
   <!-- Hero -->
   <section class="relative bg-forge-steel py-20 overflow-hidden" aria-labelledby="page-heading">
     <img
-      src={heroImg}
+      src={sized(heroImg, 960, 35)}
+      srcset={srcset(heroImg, 1600, 35)}
+      sizes="50vw"
       alt=""
       aria-hidden="true"
       width="1400" height="500"
       loading="eager"
+      decoding="async"
+      fetchpriority="high"
       class="absolute inset-0 w-full h-full object-cover opacity-20"
     />
     <div class="absolute inset-0 bg-hero-overlay"></div>
     <div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6">
-      <nav class="text-xs text-white/40 tracking-widest uppercase mb-6 flex gap-2 items-center flex-wrap" aria-label="Breadcrumb">
+      <nav class="text-xs text-white/60 tracking-widest uppercase mb-6 flex gap-2 items-center flex-wrap" aria-label="Breadcrumb">
         <a href="/" class="hover:text-white/70 transition-colors">Home</a>
         <span>/</span>
-        <a href="/services" class="hover:text-white/70 transition-colors">Services</a>
+        <a href="/services/" class="hover:text-white/70 transition-colors">Services</a>
         <span>/</span>
         <span class="text-white/70">{breadcrumb}</span>
       </nav>
-      <p class="eyebrow text-forge-orange mb-3">Forge Wellness &amp; Recovery · Wigan</p>
+      <p class="eyebrow !text-white mb-3">Forge Wellness &amp; Recovery · Wigan</p>
       <h1 id="page-heading" class="font-display font-900 uppercase text-white leading-none mb-4" style="font-size:clamp(2.2rem,5.5vw,4rem);">
-        {heroLine1}<br/><span class="text-forge-orange">{heroLine2}</span>
+        {heroLine1}{" "}<br/><span class="text-forge-orange-l">{heroLine2}</span>
       </h1>
       <p class="text-white/70 text-lg max-w-xl mb-8">{heroSub}</p>
       <div class="flex flex-wrap gap-4">
-        <a href="/contact" class="btn-forge">Book a session</a>
-        <a href="tel:+441942386400" class="btn-white">01942 386 400</a>
+        <a href="/contact/" class="btn-forge">Book a session</a>
+        <a href={SITE.phoneHref} class="btn-white">{SITE.phone}</a>
       </div>
     </div>
   </section>
@@ -69,15 +111,18 @@ const {
         <div class="reveal">
           <p class="eyebrow mb-3">What it involves</p>
           <h2 class="font-display text-display-lg text-forge-steel mt-3 mb-5">{whatIsIt.heading}</h2>
-          <p class="text-forge-steel/70 leading-relaxed text-lg" set:html={whatIsIt.body} />
-          <a href="/contact" class="btn-forge mt-8 inline-flex">Book your first session</a>
+          <p class="text-forge-steel/80 leading-relaxed text-lg" set:html={whatIsIt.body} />
+          <a href="/contact/" class="btn-forge mt-8 inline-flex">Book your first session</a>
         </div>
         <div class="reveal">
           <img
-            src={heroImg}
+            src={sized(heroImg, 960, 65, '4:3')}
+            srcset={srcset(heroImg, 960, 65, '4:3')}
+            sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
             alt={heroImgAlt}
             width="600" height="450"
             loading="lazy"
+            decoding="async"
             class="rounded-2xl shadow-card w-full aspect-[4/3] object-cover"
           />
         </div>
@@ -97,7 +142,7 @@ const {
           <div class="bg-white rounded-xl p-6 shadow-card hover:shadow-card-hover transition-shadow">
             <div class="text-3xl mb-4" aria-hidden="true">{b.icon}</div>
             <h3 class="font-display font-700 uppercase tracking-wide text-forge-steel mb-2">{b.title}</h3>
-            <p class="text-forge-steel/60 text-sm leading-relaxed">{b.desc}</p>
+            <p class="text-forge-steel/80 text-sm leading-relaxed">{b.desc}</p>
           </div>
         ))}
       </div>
@@ -110,22 +155,22 @@ const {
       <div class="section-header reveal text-center">
         <p class="eyebrow justify-center">Transparent pricing</p>
         <h2 class="font-display text-display-lg text-forge-steel mt-3 mb-4">Choose your plan</h2>
-        <p class="text-forge-steel/60 max-w-md mx-auto">No hidden fees. No sign-up costs. Cancel or change any time.</p>
+        <p class="text-forge-steel/80 max-w-md mx-auto">[Pricing terms, e.g. joining fees and cancellation policy]</p>
       </div>
       <div class="grid md:grid-cols-3 gap-6 stagger">
         {pricing.map(plan => (
           <div class={`rounded-2xl p-7 flex flex-col shadow-card ${plan.featured ? 'bg-forge-orange text-white scale-105 shadow-forge-lg' : 'bg-forge-sand border border-forge-steel/10'}`}>
             {plan.featured && (
-              <span class="text-xs font-bold tracking-widest uppercase bg-white/20 rounded-full px-3 py-1 self-start mb-4">Most popular</span>
+              <span class="text-xs font-bold tracking-widest uppercase bg-white text-forge-orange-d rounded-full px-3 py-1 self-start mb-4">Most popular</span>
             )}
             <h3 class={`font-display font-700 uppercase tracking-wide text-xl mb-1 ${plan.featured ? 'text-white' : 'text-forge-steel'}`}>{plan.name}</h3>
             <div class="mt-2 mb-5">
               <span class={`font-display font-900 text-4xl leading-none ${plan.featured ? 'text-white' : 'text-forge-steel'}`}>{plan.price}</span>
-              <span class={`text-sm ml-1 ${plan.featured ? 'text-white/70' : 'text-forge-steel/50'}`}>{plan.period}</span>
+              <span class={`text-sm ml-1 ${plan.featured ? 'text-white' : 'text-forge-steel/80'}`}>{plan.period}</span>
             </div>
             <ul class="space-y-2.5 mb-7 flex-1">
               {plan.features.map(f => (
-                <li class={`flex items-start gap-2.5 text-sm ${plan.featured ? 'text-white/85' : 'text-forge-steel/70'}`}>
+                <li class={`flex items-start gap-2.5 text-sm ${plan.featured ? 'text-white' : 'text-forge-steel/80'}`}>
                   <svg class={`w-4 h-4 mt-0.5 flex-shrink-0 ${plan.featured ? 'text-white' : 'text-forge-orange'}`} fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/>
                   </svg>
@@ -133,7 +178,7 @@ const {
                 </li>
               ))}
             </ul>
-            <a href="/contact" class={plan.featured ? 'btn-white justify-center' : 'btn-forge justify-center'}>
+            <a href="/contact/" class={plan.featured ? 'btn-white justify-center' : 'btn-forge justify-center'}>
               Book now
             </a>
           </div>
@@ -160,7 +205,7 @@ const {
                 <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
               </svg>
             </summary>
-            <div class="px-5 pb-5 text-forge-steel/70 leading-relaxed text-sm">
+            <div class="px-5 pb-5 text-forge-steel/80 leading-relaxed text-sm">
               {item.a}
             </div>
           </details>
@@ -180,16 +225,19 @@ const {
         {relatedServices.map(r => (
           <a href={r.href} class="group relative rounded-xl overflow-hidden shadow-card hover:shadow-card-hover transition-all duration-300 hover:-translate-y-1 block aspect-[4/3]">
             <img
-              src={r.img}
+              src={sized(r.img, 640, 65, '4:3')}
+              srcset={srcset(r.img, 640, 65, '4:3')}
+              sizes="(min-width: 1024px) 25vw, 50vw"
               alt={r.imgAlt}
               width="400" height="300"
               loading="lazy"
+              decoding="async"
               class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
             />
             <div class="absolute inset-0 bg-card-overlay"></div>
             <div class="absolute bottom-0 left-0 right-0 p-5">
               <h3 class="font-display font-700 uppercase tracking-wide text-white group-hover:text-forge-orange transition-colors">{r.name}</h3>
-              <span class="text-xs text-forge-orange font-bold tracking-widest uppercase flex items-center gap-1 mt-1">
+              <span class="text-xs text-forge-orange-xl font-bold tracking-widest uppercase flex items-center gap-1 mt-1">
                 Learn more
                 <svg class="w-3 h-3 transition-transform duration-200 group-hover:translate-x-1" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
               </span>
@@ -206,14 +254,14 @@ const {
       <h2 class="font-display font-800 text-white uppercase text-display-lg mb-4">
         Ready to book?
       </h2>
-      <p class="text-white/80 mb-8">
+      <p class="text-white mb-8">
         No contract required. Book a single session and see the difference for yourself.
       </p>
       <div class="flex flex-wrap gap-4 justify-center">
-        <a href="/contact" class="btn-white">Book {serviceName}</a>
-        <a href="tel:+441942386400" class="inline-flex items-center gap-2 text-white/80 font-semibold hover:text-white transition-colors">
+        <a href="/contact/" class="btn-white">Book {serviceName}</a>
+        <a href={SITE.phoneHref} class="inline-flex items-center gap-2 text-white font-semibold hover:underline transition-colors">
           <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"/></svg>
-          01942 386 400
+          {SITE.phone}
         </a>
       </div>
     </div>

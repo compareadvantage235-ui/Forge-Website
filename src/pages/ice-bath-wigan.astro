@@ -4,19 +4,18 @@ import LandingPage from '../components/LandingPage.astro';
 
 <LandingPage
   title="Ice Bath Wigan | Cold Water Immersion | Forge Wellness"
-  description="Cold water immersion and ice baths in Wigan at Forge Wellness. Medical-grade plunge pools, temperature controlled. Book from £15. No membership needed."
-  canonical="https://forge-wellness.netlify.app/ice-bath-wigan"
+  description="Ice baths in Wigan at Forge Wellness. Temperature-controlled cold water immersion to reduce muscle soreness and speed up recovery. No membership needed."
   slug="ice-bath-wigan"
   serviceName="cold water immersion"
-  heroLine1="Cold water immersion"
+  heroLine1="Ice baths"
   heroLine2="in Wigan"
-  heroSub="Medical-grade cold plunge pools at precisely controlled temperatures. Used by elite athletes worldwide to accelerate recovery, reduce inflammation and build mental resilience."
+  heroSub="Cold plunge pools at precisely controlled temperatures. Used by elite athletes worldwide to accelerate recovery, reduce inflammation and build mental resilience."
   heroImg="https://images.unsplash.com/photo-1713270232602-bf8dc038d91c?w=1400&q=80&auto=format&fit=crop"
-  heroImgAlt="Athlete in cold water ice bath recovery session at Forge Wellness Wigan"
+  heroImgAlt="Man beside a metal ice bath tub filled with cold water"
   breadcrumb="Ice Bath Wigan"
   whatIsIt={{
-    heading: 'Elite recovery. Now in Wigan.',
-    body: 'Cold water immersion (CWI) involves submerging the body in cold water between 8–15°C for a set duration. Used by professional sports teams worldwide, CWI triggers vasoconstriction and reduces post-exercise inflammation, accelerating muscle recovery and reducing soreness. At Forge, our plunge pools maintain precise temperatures and are cleaned and monitored to medical standards. Sessions are guided by qualified staff.',
+    heading: 'Ice baths for faster recovery',
+    body: 'Cold water immersion (CWI) involves submerging the body in cold water between 8–15°C for a set duration. Used by professional sports teams worldwide, CWI triggers vasoconstriction and reduces post-exercise inflammation, accelerating muscle recovery and reducing soreness. At Forge, our plunge pools maintain precise temperatures and are cleaned and monitored to [hygiene standard]. Sessions are guided by [qualification] staff.',
   }}
   benefits={[
     { icon: '🏃', title: 'Faster recovery', desc: 'Significantly reduces delayed onset muscle soreness (DOMS), getting you back to training sooner.' },
@@ -29,34 +28,36 @@ import LandingPage from '../components/LandingPage.astro';
   pricing={[
     {
       name: 'Single session',
-      price: '£15',
+      price: '[price]',
       period: '/session',
       features: ['30-minute session', 'Towels provided', 'Guided introduction', 'Changing facilities'],
     },
     {
       name: 'Recovery bundle',
-      price: '£50',
+      price: '[price]',
       period: '/4 sessions',
       features: ['4 x 30-minute sessions', 'All towels included', 'Progress tracking', 'Free changing facilities', 'Valid 60 days'],
       featured: true,
     },
     {
       name: 'Members rate',
-      price: '£10',
+      price: '[price]',
       period: '/session',
-      features: ['Gym members only', '20% discount', 'Unlimited booking', 'Bundle also available'],
+      features: ['Gym members only', '[discount] discount', 'Unlimited booking', 'Bundle also available'],
     },
   ]}
   faq={[
-    { q: 'Do I need to be a gym member to book an ice bath?', a: 'No. Cold water immersion sessions can be booked by anyone, with no gym membership required. Single sessions are £15.' },
+    { q: 'Do I need to be a gym member to book an ice bath?', a: 'No. Cold water immersion sessions can be booked by anyone, with no gym membership required. Single sessions are [price].' },
     { q: 'What temperature are the pools?', a: 'Our standard cold plunge pools are maintained at 10–12°C. We also offer a warmer introductory option at 15°C for first-timers.' },
     { q: 'How long is a session?', a: 'Sessions are 30 minutes. This includes a guided introduction, your immersion (typically 3–10 minutes depending on experience), and recovery time.' },
     { q: 'Is it safe if I have a heart condition?', a: 'Cold water immersion is not recommended for people with certain cardiovascular conditions, Raynaud\'s disease, or during pregnancy. Please consult your GP before booking if you have any health concerns.' },
     { q: 'What should I bring?', a: 'Just yourself and your swimwear. Towels, robes and changing facilities are all provided. We recommend eating at least 1 hour before your session.' },
+    { q: `What is the difference between an ice bath and cold water immersion?`, a: `They are the same thing. Ice bath is the everyday name for cold water immersion: sitting in water kept at around 8–15°C to help your body recover after exercise.` },
+    { q: `How often should I take an ice bath?`, a: `Most people take an ice bath two to four times a week, usually after hard training. If your main goal is building muscle, avoid an ice bath straight after strength sessions, as the cold can blunt some of the training effect.` },
   ]}
   relatedServices={[
-    { href: '/infrared-sauna-wigan', name: 'Infrared Sauna', img: 'https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=400&q=80&auto=format&fit=crop', imgAlt: 'Infrared sauna' },
-    { href: '/sports-massage-wigan', name: 'Sports Massage', img: 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=400&q=80&auto=format&fit=crop', imgAlt: 'Sports massage' },
-    { href: '/compression-therapy-wigan', name: 'Compression Therapy', img: 'https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=400&q=80&auto=format&fit=crop', imgAlt: 'Compression therapy' },
+    { href: '/infrared-sauna-wigan/', name: 'Infrared Sauna', img: 'https://images.unsplash.com/photo-1605614307370-f7a1e58ae751?w=400&q=80&auto=format&fit=crop', imgAlt: 'Infrared sauna' },
+    { href: '/sports-massage-wigan/', name: 'Sports Massage', img: 'https://images.unsplash.com/photo-1540205895360-4ad4cffb3aa8?w=400&q=80&auto=format&fit=crop', imgAlt: 'Sports massage' },
+    { href: '/compression-therapy-wigan/', name: 'Compression Therapy', img: 'https://images.unsplash.com/photo-1761839257789-20147513121a?w=400&q=80&auto=format&fit=crop', imgAlt: 'Compression therapy' },
   ]}
 />

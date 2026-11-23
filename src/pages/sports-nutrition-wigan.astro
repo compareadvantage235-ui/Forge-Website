@@ -4,45 +4,44 @@ import LandingPage from '../components/LandingPage.astro';
 
 <LandingPage
   title="Sports Nutrition Wigan | Forge Wellness & Recovery"
-  description="Expert sports nutrition coaching in Wigan at Forge Wellness. SENr-accredited nutritionist, bespoke plans for performance and body composition. From £80."
-  canonical="https://forge-wellness.netlify.app/sports-nutrition-wigan"
+  description="Sports nutrition coaching in Wigan. Personalised eating plans for performance, recovery and body composition, built around your training."
   slug="sports-nutrition-wigan"
   serviceName="sports nutrition"
   heroLine1="Sports nutrition"
   heroLine2="in Wigan"
-  heroSub="Expert nutrition coaching tailored to your sport, body composition and performance goals. Evidence-based plans from a qualified, SENr-accredited sports nutritionist."
+  heroSub="Expert nutrition coaching tailored to your sport, body composition and performance goals. Evidence-based plans from a [accreditation] sports nutritionist."
   heroImg="https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=1400&q=80&auto=format&fit=crop"
-  heroImgAlt="Sports nutritionist reviewing meal plan at Forge Wellness Wigan"
+  heroImgAlt="Healthy meal bowl with eggs, avocado and fresh vegetables"
   breadcrumb="Sports Nutrition Wigan"
   whatIsIt={{
     heading: "Fuel for performance, not just weight loss",
-    body: "Sports nutrition at Forge goes beyond calorie counting. Our SENr-accredited nutritionist Amara Johnson builds evidence-based nutrition strategies around your specific sport, training load, body composition goals and lifestyle. Whether you want to build muscle, reduce body fat, improve endurance performance, recover faster or simply feel better — nutrition is the most underutilised performance lever available to you.",
+    body: "Sports nutrition at Forge goes beyond calorie counting. Our [accreditation] nutritionist [Name] builds evidence-based nutrition strategies around your specific sport, training load, body composition goals and lifestyle. Whether you want to build muscle, reduce body fat, improve endurance performance, recover faster or simply feel better — nutrition is the most underutilised performance lever available to you.",
   }}
   benefits={[
     { icon: '📊', title: 'Bespoke nutrition plans', desc: 'A written plan tailored to your sport, training schedule, food preferences and goals — not a generic template.' },
     { icon: '🏃', title: 'Peri-workout nutrition', desc: 'Precision fuelling strategies for before, during and after training to maximise performance and recovery.' },
     { icon: '💪', title: 'Body composition goals', desc: 'Whether building muscle or losing fat, we design nutrition to support your physique goals without sacrificing performance.' },
     { icon: '📱', title: 'App-based tracking', desc: 'Log food, track macros and monitor body composition metrics through the Forge app.' },
-    { icon: '🎓', title: 'SENr-accredited nutritionist', desc: 'Amara Johnson holds an MSc in Sport Nutrition and is accredited by the Sport & Exercise Nutrition Register.' },
+    { icon: '🎓', title: '[Accreditation]', desc: '[Name] holds [qualifications and accreditations].' },
     { icon: '🤝', title: 'Integrated with training', desc: 'Your nutrition plan is coordinated with your training programme and recovery protocols for maximum effect.' },
   ]}
   pricing={[
     {
       name: 'Initial consultation',
-      price: '£80',
+      price: '[price]',
       period: '/session',
       features: ['90-minute assessment', 'Dietary analysis', 'Goal-setting session', 'Written action plan'],
     },
     {
       name: 'Performance package',
-      price: '£220',
+      price: '[price]',
       period: '/12 weeks',
       features: ['Initial consultation', '3 x follow-up sessions', 'Full bespoke nutrition plan', 'Macro targets & meal ideas', 'App-based tracking setup', 'WhatsApp check-ins'],
       featured: true,
     },
     {
       name: 'Follow-up session',
-      price: '£50',
+      price: '[price]',
       period: '/session',
       features: ['Progress review', 'Plan adjustment', '45-minute session', 'Updated written plan'],
     },
@@ -53,10 +52,12 @@ import LandingPage from '../components/LandingPage.astro';
     { q: 'Do you prescribe supplements?', a: 'We focus primarily on food-first nutrition. Where evidence supports supplementation (e.g. creatine, vitamin D, omega-3), we will advise on evidence-based options. We do not sell supplements.' },
     { q: 'Can nutrition coaching integrate with my PT sessions?', a: 'Yes — and we recommend it. When your nutrition plan is designed by the same team as your training programme, the results are significantly better than treating them in isolation.' },
     { q: 'How quickly will I see results?', a: 'Dietary changes typically produce measurable improvements in energy, recovery and body composition within 4–6 weeks of consistent adherence.' },
+    { q: `What happens in a sports nutrition consultation?`, a: `Your nutritionist looks at your current diet, training, sleep and goals, then builds a simple, realistic eating plan. Follow-up sessions track your progress and adjust the plan.` },
+    { q: `Can sports nutrition help with recovery?`, a: `Yes. Eating enough protein and carbohydrate after training, staying hydrated and sleeping well all help your muscles repair. Your nutritionist will plan meals around your sessions to support recovery.` },
   ]}
   relatedServices={[
-    { href: '/personal-trainer-wigan', name: 'Personal Training', img: 'https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=400&q=80&auto=format&fit=crop', imgAlt: 'Personal training' },
-    { href: '/physiotherapy-wigan', name: 'Physiotherapy', img: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=400&q=80&auto=format&fit=crop', imgAlt: 'Physiotherapy' },
-    { href: '/gym-membership-wigan', name: 'Gym Membership', img: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=400&q=80&auto=format&fit=crop', imgAlt: 'Gym floor' },
+    { href: '/personal-trainer-wigan/', name: 'Personal Training', img: 'https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=400&q=80&auto=format&fit=crop', imgAlt: 'Personal training' },
+    { href: '/physiotherapy-wigan/', name: 'Physiotherapy', img: 'https://images.unsplash.com/photo-1649751361457-01d3a696c7e6?w=400&q=80&auto=format&fit=crop', imgAlt: 'Physiotherapy' },
+    { href: '/gym-membership-wigan/', name: 'Gym Membership', img: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=400&q=80&auto=format&fit=crop', imgAlt: 'Gym floor' },
   ]}
 />

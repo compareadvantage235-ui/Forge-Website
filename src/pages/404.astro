@@ -1,0 +1,44 @@
+---
+// Cloudflare Pages serves this file with a real 404 status for any unknown URL.
+// Without it, Cloudflare returned the homepage with "200 OK" (a "soft 404").
+import Layout from '../layouts/Layout.astro';
+
+const links = [
+  { href: '/services/', label: 'All services' },
+  { href: '/gym-membership-wigan/', label: 'Gym membership' },
+  { href: '/personal-trainer-wigan/', label: 'Personal training' },
+  { href: '/sports-massage-wigan/', label: 'Sports massage' },
+  { href: '/physiotherapy-wigan/', label: 'Physiotherapy' },
+  { href: '/contact/', label: 'Contact us' },
+];
+---
+
+<Layout
+  title="Page Not Found | Forge Wellness & Recovery Wigan"
+  description="Sorry, this page could not be found. Explore our gym and recovery services in Wigan or get in touch."
+  noindex
+>
+  <section class="bg-forge-steel py-24">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 text-center">
+      <p class="eyebrow !text-white justify-center mb-4">Error 404</p>
+      <h1 class="font-display font-900 uppercase text-white leading-none mb-6" style="font-size:clamp(2.5rem,6vw,4.5rem);">
+        Page <span class="text-forge-orange-l">not found</span>
+      </h1>
+      <p class="text-white/80 text-lg mb-10">
+        The page you are looking for has moved or no longer exists.
+      </p>
+      <a href="/" class="btn-forge">Back to the homepage</a>
+    </div>
+  </section>
+
+  <section class="py-16 bg-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center">
+      <h2 class="font-display font-700 uppercase text-2xl tracking-wide text-forge-steel mb-6">Popular pages</h2>
+      <ul class="flex flex-wrap justify-center gap-3">
+        {links.map(l => (
+          <li><a href={l.href} class="inline-block rounded-full border border-forge-steel/20 px-4 py-2 text-sm font-semibold text-forge-steel hover:border-forge-orange hover:text-forge-orange-d transition-colors">{l.label}</a></li>
+        ))}
+      </ul>
+    </div>
+  </section>
+</Layout>

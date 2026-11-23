@@ -1,26 +1,44 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { SITE } from '../data/site';
+import FAQ from '../components/FAQ.astro';
+
+const faq = [
+  { q: `How quickly will you reply to my message?`, a: `We aim to reply within [response time]. For anything urgent, call us on ${SITE.phone}.` },
+  { q: `Can I book over the phone?`, a: `Yes. Call ${SITE.phone} during opening hours and we will book your session and answer any questions.` },
+  { q: `Is there parking near Forge?`, a: `[Parking details]. We are also within walking distance of Wigan town centre.` },
+  { q: `Can I change or cancel a booking?`, a: `Yes. [Cancellation and rescheduling policy].` },
+];
+
+const popular = [
+  { href: '/gym-membership-wigan/', label: 'Gym membership' },
+  { href: '/personal-trainer-wigan/', label: 'Personal training' },
+  { href: '/sports-massage-wigan/', label: 'Sports massage' },
+  { href: '/physiotherapy-wigan/', label: 'Physiotherapy' },
+  { href: '/ice-bath-wigan/', label: 'Ice bath' },
+  { href: '/infrared-sauna-wigan/', label: 'Infrared sauna' },
+];
 ---
 
 <Layout
-  title="Contact & Book | Forge Wellness & Recovery Wigan"
-  description="Book a session, ask a question, or get directions to Forge Wellness & Recovery at 8 Market Place, Wigan WN1 1PG. Call 01942 386 400."
-  canonical="https://forge-wellness.netlify.app/contact"
+  breadcrumbs={[{ name: 'Contact', path: '/contact/' }]}
+  title="Contact Us | Forge Wellness & Recovery Wigan"
+  description="Contact Forge Wellness & Recovery in Wigan. Book a gym tour, personal training, sports massage, physio or recovery session, or send us a question."
 >
 
   <!-- Hero -->
   <section class="bg-forge-steel py-20">
     <div class="max-w-6xl mx-auto px-4 sm:px-6">
-      <nav class="text-xs text-white/40 tracking-widest uppercase mb-6 flex gap-2 items-center" aria-label="Breadcrumb">
+      <nav class="text-xs text-white/60 tracking-widest uppercase mb-6 flex gap-2 items-center" aria-label="Breadcrumb">
         <a href="/" class="hover:text-white/70 transition-colors">Home</a>
         <span>/</span>
         <span class="text-white/70">Contact</span>
       </nav>
-      <p class="eyebrow text-forge-orange mb-3">Get in touch</p>
-      <h1 class="font-display font-900 uppercase text-white leading-none mb-4" style="font-size:clamp(2.5rem,6vw,4.5rem);">
+      <h1 class="eyebrow !text-white text-sm sm:text-base mb-4">Contact Forge Wellness &amp; Recovery, Wigan</h1>
+      <h2 class="font-display font-900 uppercase text-white leading-none mb-4" style="font-size:clamp(2.5rem,6vw,4.5rem);">
         Book a session.<br />
-        <span class="text-forge-orange">We'll handle the rest.</span>
-      </h1>
+        <span class="text-forge-orange-l">We'll handle the rest.</span>
+      </h2>
     </div>
   </section>
 
@@ -44,9 +62,9 @@ import Layout from '../layouts/Layout.astro';
                   </svg>
                 </div>
                 <div>
-                  <p class="text-xs font-bold tracking-widest uppercase text-forge-steel/40 mb-0.5">Address</p>
+                  <p class="text-xs font-bold tracking-widest uppercase text-forge-steel/80 mb-0.5">Address</p>
                   <address class="not-italic text-forge-steel/80 leading-relaxed text-sm">
-                    8 Market Place<br />Wigan WN1 1PG
+                    {SITE.fullAddress}
                   </address>
                 </div>
               </li>
@@ -57,9 +75,9 @@ import Layout from '../layouts/Layout.astro';
                   </svg>
                 </div>
                 <div>
-                  <p class="text-xs font-bold tracking-widest uppercase text-forge-steel/40 mb-0.5">Phone</p>
-                  <a href="tel:+441942386400" class="text-forge-orange font-semibold hover:text-forge-orange-d transition-colors text-sm">
-                    01942 386 400
+                  <p class="text-xs font-bold tracking-widest uppercase text-forge-steel/80 mb-0.5">Phone</p>
+                  <a href={SITE.phoneHref} class="text-forge-orange-d font-semibold hover:underline transition-colors text-sm">
+                    {SITE.phone}
                   </a>
                 </div>
               </li>
@@ -70,9 +88,9 @@ import Layout from '../layouts/Layout.astro';
                   </svg>
                 </div>
                 <div>
-                  <p class="text-xs font-bold tracking-widest uppercase text-forge-steel/40 mb-0.5">Email</p>
-                  <a href="mailto:hello@forgewellness.co.uk" class="text-forge-orange font-semibold hover:text-forge-orange-d transition-colors text-sm">
-                    hello@forgewellness.co.uk
+                  <p class="text-xs font-bold tracking-widest uppercase text-forge-steel/80 mb-0.5">Email</p>
+                  <a href={SITE.emailHref} class="text-forge-orange-d font-semibold hover:underline transition-colors text-sm">
+                    {SITE.email}
                   </a>
                 </div>
               </li>
@@ -83,13 +101,9 @@ import Layout from '../layouts/Layout.astro';
           <div class="bg-white rounded-2xl p-7 shadow-card reveal">
             <h3 class="font-display font-700 uppercase tracking-wide text-forge-steel mb-5">Opening Hours</h3>
             <ul class="space-y-3 text-sm">
-              {[
-                ['Mon – Fri', '06:00 – 22:00'],
-                ['Saturday',  '07:00 – 20:00'],
-                ['Sunday',    '08:00 – 18:00'],
-              ].map(([day, hours]) => (
+              {SITE.hours.map(([day, hours]) => (
                 <li class="flex justify-between border-b border-forge-steel/8 pb-3 last:border-0 last:pb-0">
-                  <span class="text-forge-steel/60">{day}</span>
+                  <span class="text-forge-steel/80">{day}</span>
                   <span class="font-semibold text-forge-steel">{hours}</span>
                 </li>
               ))}
@@ -101,12 +115,12 @@ import Layout from '../layouts/Layout.astro';
         <div class="lg:col-span-3 reveal">
           <div class="bg-white rounded-2xl p-8 shadow-card">
             <h2 class="font-display font-700 uppercase text-xl tracking-wide text-forge-steel mb-2">Send us a message</h2>
-            <p class="text-forge-steel/55 text-sm mb-7">We aim to reply within 2 hours during opening hours.</p>
+            <p class="text-forge-steel/80 text-sm mb-7">We aim to reply within 2 hours during opening hours.</p>
 
             <form id="contact-form" class="space-y-5" novalidate>
               <div class="grid sm:grid-cols-2 gap-5">
                 <div>
-                  <label for="name" class="block text-xs font-bold tracking-widest uppercase text-forge-steel/60 mb-2">Full Name *</label>
+                  <label for="name" class="block text-xs font-bold tracking-widest uppercase text-forge-steel/80 mb-2">Full Name *</label>
                   <input
                     type="text" id="name" name="name" required autocomplete="name"
                     class="w-full rounded-lg border border-forge-steel/20 bg-forge-sand px-4 py-3 text-sm text-forge-steel placeholder-forge-steel/30 focus:outline-none focus:ring-2 focus:ring-forge-orange focus:border-transparent transition-all"
@@ -114,7 +128,7 @@ import Layout from '../layouts/Layout.astro';
                   />
                 </div>
                 <div>
-                  <label for="email" class="block text-xs font-bold tracking-widest uppercase text-forge-steel/60 mb-2">Email *</label>
+                  <label for="email" class="block text-xs font-bold tracking-widest uppercase text-forge-steel/80 mb-2">Email *</label>
                   <input
                     type="email" id="email" name="email" required autocomplete="email"
                     class="w-full rounded-lg border border-forge-steel/20 bg-forge-sand px-4 py-3 text-sm text-forge-steel placeholder-forge-steel/30 focus:outline-none focus:ring-2 focus:ring-forge-orange focus:border-transparent transition-all"
@@ -123,7 +137,7 @@ import Layout from '../layouts/Layout.astro';
                 </div>
               </div>
               <div>
-                <label for="phone" class="block text-xs font-bold tracking-widest uppercase text-forge-steel/60 mb-2">Phone</label>
+                <label for="phone" class="block text-xs font-bold tracking-widest uppercase text-forge-steel/80 mb-2">Phone</label>
                 <input
                   type="tel" id="phone" name="phone" autocomplete="tel"
                   class="w-full rounded-lg border border-forge-steel/20 bg-forge-sand px-4 py-3 text-sm text-forge-steel placeholder-forge-steel/30 focus:outline-none focus:ring-2 focus:ring-forge-orange focus:border-transparent transition-all"
@@ -131,7 +145,7 @@ import Layout from '../layouts/Layout.astro';
                 />
               </div>
               <div>
-                <label for="service" class="block text-xs font-bold tracking-widest uppercase text-forge-steel/60 mb-2">Service interested in</label>
+                <label for="service" class="block text-xs font-bold tracking-widest uppercase text-forge-steel/80 mb-2">Service interested in</label>
                 <select
                   id="service" name="service"
                   class="w-full rounded-lg border border-forge-steel/20 bg-forge-sand px-4 py-3 text-sm text-forge-steel focus:outline-none focus:ring-2 focus:ring-forge-orange focus:border-transparent transition-all appearance-none"
@@ -151,7 +165,7 @@ import Layout from '../layouts/Layout.astro';
                 </select>
               </div>
               <div>
-                <label for="message" class="block text-xs font-bold tracking-widest uppercase text-forge-steel/60 mb-2">Message *</label>
+                <label for="message" class="block text-xs font-bold tracking-widest uppercase text-forge-steel/80 mb-2">Message *</label>
                 <textarea
                   id="message" name="message" required rows="4"
                   class="w-full rounded-lg border border-forge-steel/20 bg-forge-sand px-4 py-3 text-sm text-forge-steel placeholder-forge-steel/30 focus:outline-none focus:ring-2 focus:ring-forge-orange focus:border-transparent transition-all resize-none"
@@ -172,10 +186,26 @@ import Layout from '../layouts/Layout.astro';
     </div>
   </section>
 
+  <FAQ faq={faq} />
+
+  <!-- Popular services (internal links) -->
+  <section class="py-16 bg-white" aria-labelledby="popular-heading">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 text-center">
+      <h2 id="popular-heading" class="font-display font-700 uppercase text-2xl tracking-wide text-forge-steel mb-6">Popular services in Wigan</h2>
+      <ul class="flex flex-wrap justify-center gap-3">
+        {popular.map(p => (
+          <li><a href={p.href} class="inline-block rounded-full border border-forge-steel/20 px-4 py-2 text-sm font-semibold text-forge-steel hover:border-forge-orange hover:text-forge-orange-d transition-colors">{p.label}</a></li>
+        ))}
+        <li><a href="/services/" class="inline-block rounded-full bg-forge-steel px-4 py-2 text-sm font-semibold text-white hover:bg-forge-steel-m transition-colors">All services</a></li>
+      </ul>
+    </div>
+  </section>
+
 </Layout>
 
 <script>
-  const form    = document.getElementById('contact-form') as HTMLFormElement;
+  import { SITE } from '../data/site';
+  const form   = document.getElementById('contact-form') as HTMLFormElement;
   const status  = document.getElementById('form-status') as HTMLDivElement;
   const btn     = document.getElementById('submit-btn') as HTMLButtonElement;
   const ENDPOINT = 'https://script.google.com/macros/s/AKfycbw14wYSXu93tA6ho8rAgj0SyEghzorgqGUXemuUxsvgnKBN9Pg7REpIcMHiSECN32_z/exec';
@@ -199,7 +229,7 @@ import Layout from '../layouts/Layout.astro';
       form.reset();
     } catch {
       status.className = 'rounded-lg px-4 py-3 text-sm font-semibold bg-red-50 text-red-800 border border-red-200';
-      status.textContent = 'Something went wrong. Please call us on 01942 386 400.';
+      status.textContent = `Something went wrong. Please call us on ${SITE.phone}.`;
       status.classList.remove('hidden');
     } finally {
       btn.disabled = false;

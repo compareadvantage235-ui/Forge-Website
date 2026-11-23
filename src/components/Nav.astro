@@ -1,8 +1,8 @@
 ---
 const links = [
-  { href: '/services',  label: 'Services'  },
-  { href: '/about',     label: 'About'     },
-  { href: '/contact',   label: 'Contact'   },
+  { href: '/services/',  label: 'Services'  },
+  { href: '/about/',     label: 'About'     },
+  { href: '/contact/',   label: 'Contact'   },
 ];
 const current = Astro.url.pathname;
 ---
@@ -12,7 +12,7 @@ const current = Astro.url.pathname;
     <div class="flex items-center justify-between h-16 md:h-18">
 
       <!-- Logo -->
-      <a href="/" class="flex items-center gap-2.5 group flex-shrink-0" aria-label="Forge Wellness home">
+      <a href="/" class="flex items-center gap-2.5 group flex-shrink-0" aria-label="FORGE WR – Forge Wellness &amp; Recovery home">
         <!-- Forge anvil mark -->
         <svg width="32" height="32" viewBox="0 0 32 32" fill="none" aria-hidden="true">
           <rect width="32" height="32" rx="6" fill="#C4511A"/>
@@ -20,7 +20,7 @@ const current = Astro.url.pathname;
           <rect x="13" y="8" width="6" height="4" rx="1" fill="white"/>
         </svg>
         <span class="font-display font-800 text-xl tracking-widest text-white uppercase leading-none">
-          FORGE <span class="text-forge-orange">WR</span>
+          FORGE <span class="text-forge-orange-l">WR</span>
         </span>
       </a>
 
@@ -29,14 +29,14 @@ const current = Astro.url.pathname;
         {links.map(link => (
           <a
             href={link.href}
-            aria-current={current === link.href + '/' || current === link.href ? 'page' : undefined}
+            aria-current={current.replace(/\/?$/, '/') === link.href ? 'page' : undefined}
             class="text-xs font-bold tracking-widest uppercase text-white/70 transition-colors duration-200 hover:text-forge-orange data-[current]:text-forge-orange relative group"
           >
             {link.label}
             <span class="absolute -bottom-0.5 left-0 w-0 h-px bg-forge-orange transition-all duration-200 group-hover:w-full"></span>
           </a>
         ))}
-        <a href="/contact" class="btn-forge text-xs py-2.5 px-5">Book Now</a>
+        <a href="/contact/" class="btn-forge text-xs py-2.5 px-5">Book Now</a>
       </nav>
 
       <!-- Mobile hamburger -->
@@ -68,7 +68,7 @@ const current = Astro.url.pathname;
           {link.label}
         </a>
       ))}
-      <a href="/contact" class="btn-forge mt-3 justify-center">Book Now</a>
+      <a href="/contact/" class="btn-forge mt-3 justify-center">Book Now</a>
     </nav>
   </div>
 </header>

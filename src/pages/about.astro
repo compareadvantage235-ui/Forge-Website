@@ -1,34 +1,44 @@
 ---
+import { sized, srcset } from '../lib/img';
 import Layout from '../layouts/Layout.astro';
+import { SITE } from '../data/site';
+import FAQ from '../components/FAQ.astro';
+
+const faq = [
+  { q: `What makes Forge different from a regular gym?`, a: `Forge puts training and recovery under one roof. As well as a full gym, you can book sports massage, physiotherapy, ice baths, infrared sauna and nutrition coaching, with practitioners who work together on your progress.` },
+  { q: `Is Forge only for athletes?`, a: `No. Forge welcomes everyone, from people starting their fitness journey or returning from injury to club and competitive athletes.` },
+  { q: `Who works at Forge?`, a: `Our team includes personal trainers, a physiotherapist, sports massage therapists and a sports nutritionist. [Team qualifications and professional registrations].` },
+  { q: `Can I look around before I book?`, a: `Yes. Contact us to arrange a visit and we will show you the gym and recovery facilities.` },
+];
 
 const team = [
   {
-    name: 'James Thornton',
+    name: '[Name]',
     role: 'Head of Performance',
-    certs: 'MSc Sports Science · CIMSPA Senior Practitioner',
+    certs: '[Qualifications]',
     img: 'https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=400&q=80&auto=format&fit=crop&crop=face',
-    bio: 'James founded Forge after 10 years working with elite rugby league clubs across the Super League.',
+    bio: '[Short bio]',
   },
   {
-    name: 'Dr. Sarah Chen',
+    name: '[Name]',
     role: 'Lead Physiotherapist',
-    certs: 'PhD Physiotherapy · HCPC Registered',
+    certs: '[Qualifications]',
     img: 'https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=400&q=80&auto=format&fit=crop&crop=face',
-    bio: 'Sarah specialises in sports injuries and post-surgical rehabilitation, with a focus on return-to-sport protocols.',
+    bio: '[Short bio]',
   },
   {
-    name: 'Marcus Bell',
+    name: '[Name]',
     role: 'Strength & Conditioning',
-    certs: 'BSc Sport & Exercise Science · NSCA-CSCS',
+    certs: '[Qualifications]',
     img: 'https://images.unsplash.com/photo-1567168544813-cc03465b4fa8?w=400&q=80&auto=format&fit=crop&crop=face',
-    bio: 'Marcus builds strength and conditioning programmes for competitive athletes, from club to semi-professional level.',
+    bio: '[Short bio]',
   },
   {
-    name: 'Amara Johnson',
+    name: '[Name]',
     role: 'Sports Nutritionist',
-    certs: 'MSc Sport Nutrition · SENr Accredited',
+    certs: '[Qualifications]',
     img: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&q=80&auto=format&fit=crop&crop=face',
-    bio: 'Amara creates evidence-based nutrition strategies for performance, body composition, and long-term health.',
+    bio: '[Short bio]',
   },
 ];
 
@@ -57,32 +67,37 @@ const values = [
 ---
 
 <Layout
-  title="About Forge Wellness & Recovery | Wigan's Premier Recovery Centre"
-  description="Meet the team behind Forge Wellness & Recovery in Wigan. CIMSPA-registered practitioners, sports scientists, and performance coaches all under one roof."
-  canonical="https://forge-wellness.netlify.app/about"
+  preloadImage={{ srcset: srcset("https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=1400&q=75&auto=format&fit=crop", 1600, 35), sizes: "50vw" }}
+  breadcrumbs={[{ name: 'About', path: '/about/' }]}
+  title="About Us | Forge Wellness & Recovery Wigan"
+  description="Meet the team behind Forge Wellness & Recovery, a gym and recovery centre in Wigan. Trainers, therapists and a nutritionist all under one roof."
 >
 
   <!-- Hero -->
   <section class="relative bg-forge-steel py-20 overflow-hidden">
     <img
-      src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=1400&q=75&auto=format&fit=crop"
+      src={sized("https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=1400&q=75&auto=format&fit=crop", 960, 35)}
+      srcset={srcset("https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=1400&q=75&auto=format&fit=crop", 1600, 35)}
+      sizes="50vw"
       alt=""
       aria-hidden="true"
       width="1400" height="400"
       loading="eager"
+      decoding="async"
+      fetchpriority="high"
       class="absolute inset-0 w-full h-full object-cover opacity-15"
     />
     <div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6">
-      <nav class="text-xs text-white/40 tracking-widest uppercase mb-6 flex gap-2 items-center" aria-label="Breadcrumb">
+      <nav class="text-xs text-white/60 tracking-widest uppercase mb-6 flex gap-2 items-center" aria-label="Breadcrumb">
         <a href="/" class="hover:text-white/70 transition-colors">Home</a>
         <span>/</span>
         <span class="text-white/70">About</span>
       </nav>
-      <p class="eyebrow text-forge-orange mb-3">Our story</p>
-      <h1 class="font-display font-900 uppercase text-white leading-none mb-4" style="font-size:clamp(2.5rem,6vw,4.5rem);">
+      <h1 class="eyebrow !text-white text-sm sm:text-base mb-4">About Forge Wellness &amp; Recovery</h1>
+      <h2 class="font-display font-900 uppercase text-white leading-none mb-4" style="font-size:clamp(2.5rem,6vw,4.5rem);">
         Built for athletes.<br />
-        <span class="text-forge-orange">Built in Wigan.</span>
-      </h1>
+        <span class="text-forge-orange-l">Built in Wigan.</span>
+      </h2>
     </div>
   </section>
 
@@ -95,43 +110,61 @@ const values = [
           <h2 class="font-display text-display-lg text-forge-steel mt-3 mb-6">
             Wigan deserves better recovery facilities
           </h2>
-          <div class="space-y-4 text-forge-steel/70 leading-relaxed">
+          <div class="space-y-4 text-forge-steel/80 leading-relaxed">
             <p>
-              Forge was born in 2022 from a simple frustration: Wigan's athletes — the rugby players, the
+              Forge was born in [year] from a simple frustration: Wigan's athletes — the rugby players, the
               marathon runners, the weekend warriors — had no place to access the recovery tools that
               professional athletes take for granted.
             </p>
             <p>
-              Founder James Thornton spent 10 years working with Super League clubs and watched athletes
+              [Founder name] spent [number] years working with [background] and watched athletes
               transform their performance not just by training harder, but by recovering smarter. He
               wanted to bring that same approach to every athlete in Wigan, regardless of their level.
             </p>
             <p>
-              Today, Forge has 1,200 members, 8 specialist practitioners, and Wigan's only
-              HYROX-certified training facility — all at 8 Market Place, right in the town centre.
+              Today, Forge has [number] members and [number] specialist practitioners, all at
+              {SITE.address}, right in the town centre.
+            </p>
+            <p>
+              Under one roof you can join the <a href="/gym-membership-wigan/" class="text-forge-orange font-semibold hover:underline">gym</a>,
+              train with a <a href="/personal-trainer-wigan/" class="text-forge-orange font-semibold hover:underline">personal trainer</a>,
+              book a <a href="/sports-massage-wigan/" class="text-forge-orange font-semibold hover:underline">sports massage</a> or
+              <a href="/physiotherapy-wigan/" class="text-forge-orange font-semibold hover:underline">physiotherapy</a>, and recover in our
+              <a href="/ice-bath-wigan/" class="text-forge-orange font-semibold hover:underline">ice baths</a> and
+              <a href="/infrared-sauna-wigan/" class="text-forge-orange font-semibold hover:underline">infrared sauna</a>.
+              See <a href="/services/" class="text-forge-orange font-semibold hover:underline">all our services</a>.
             </p>
           </div>
         </div>
         <div class="grid grid-cols-2 gap-4 reveal">
           <img
-            src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=500&q=80&auto=format&fit=crop"
-            alt="Forge Wellness gym floor"
+            src={sized("https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=500&q=80&auto=format&fit=crop", 640, 65, '16:9')}
+            srcset={srcset("https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=500&q=80&auto=format&fit=crop", 640, 65, '16:9')}
+            sizes="(min-width: 1024px) 25vw, 50vw"
+            alt="Dumbbell racks and strength equipment on a gym floor"
             width="500" height="400"
             loading="lazy"
+            decoding="async"
             class="rounded-xl shadow-card col-span-2 w-full aspect-video object-cover"
           />
           <img
-            src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=400&q=80&auto=format&fit=crop"
-            alt="Infrared sauna at Forge Wellness"
+            src={sized("https://images.unsplash.com/photo-1605614307370-f7a1e58ae751?w=400&q=80&auto=format&fit=crop", 640, 65, '1:1')}
+            srcset={srcset("https://images.unsplash.com/photo-1605614307370-f7a1e58ae751?w=400&q=80&auto=format&fit=crop", 640, 65, '1:1')}
+            sizes="(min-width: 1024px) 25vw, 50vw"
+            alt="Woman relaxing on a wooden sauna bench"
             width="400" height="300"
             loading="lazy"
+            decoding="async"
             class="rounded-xl shadow-card w-full aspect-square object-cover"
           />
           <img
-            src="https://images.unsplash.com/photo-1706197884196-eb9a8ea96d41?w=400&q=80&auto=format&fit=crop"
-            alt="Cold water immersion at Forge Wellness"
+            src={sized("https://images.unsplash.com/photo-1681980016814-0bac16721969?w=400&q=80&auto=format&fit=crop", 640, 65, '1:1')}
+            srcset={srcset("https://images.unsplash.com/photo-1681980016814-0bac16721969?w=400&q=80&auto=format&fit=crop", 640, 65, '1:1')}
+            sizes="(min-width: 1024px) 25vw, 50vw"
+            alt="Man sitting in an ice bath full of ice"
             width="400" height="300"
             loading="lazy"
+            decoding="async"
             class="rounded-xl shadow-card w-full aspect-square object-cover"
           />
         </div>
@@ -151,7 +184,7 @@ const values = [
           <div class="bg-white rounded-2xl p-7 shadow-card hover:shadow-card-hover transition-shadow">
             <div class="w-12 h-12 rounded-xl bg-forge-orange/10 text-forge-orange flex items-center justify-center mb-5" set:html={v.icon}></div>
             <h3 class="font-display font-700 uppercase text-lg tracking-wide text-forge-steel mb-2">{v.title}</h3>
-            <p class="text-forge-steel/60 text-sm leading-relaxed">{v.desc}</p>
+            <p class="text-forge-steel/80 text-sm leading-relaxed">{v.desc}</p>
           </div>
         ))}
       </div>
@@ -164,8 +197,8 @@ const values = [
       <div class="section-header reveal">
         <p class="eyebrow">The people behind Forge</p>
         <h2 class="font-display text-display-lg text-forge-steel mt-3 mb-4">Meet the team</h2>
-        <p class="text-forge-steel/60 text-lg max-w-xl">
-          Every practitioner at Forge is fully qualified, registered with their professional body, and
+        <p class="text-forge-steel/80 text-lg max-w-xl">
+          Every practitioner at Forge is [qualification and professional registration details], and
           passionate about performance.
         </p>
       </div>
@@ -175,19 +208,22 @@ const values = [
           <div class="group bg-forge-sand rounded-2xl overflow-hidden shadow-card hover:shadow-card-hover transition-all duration-300 hover:-translate-y-1">
             <div class="relative overflow-hidden">
               <img
-                src={member.img}
+                src={sized(member.img, 640, 65, '1:1')}
+                srcset={srcset(member.img, 640, 65, '1:1')}
+                sizes="(min-width: 1024px) 25vw, 50vw"
                 alt={`${member.name}, ${member.role} at Forge Wellness`}
                 width="400" height="400"
                 loading="lazy"
+                decoding="async"
                 class="w-full aspect-square object-cover object-top transition-transform duration-500 group-hover:scale-105"
               />
               <div class="absolute inset-0 bg-card-overlay opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
             </div>
             <div class="p-5">
               <h3 class="font-display font-700 uppercase text-lg tracking-wide text-forge-steel">{member.name}</h3>
-              <p class="text-forge-orange text-xs font-bold tracking-widest uppercase mt-0.5">{member.role}</p>
-              <p class="text-forge-steel/50 text-xs mt-1 mb-3">{member.certs}</p>
-              <p class="text-forge-steel/65 text-sm leading-relaxed">{member.bio}</p>
+              <p class="text-forge-orange-d text-xs font-bold tracking-widest uppercase mt-0.5">{member.role}</p>
+              <p class="text-forge-steel/80 text-xs mt-1 mb-3">{member.certs}</p>
+              <p class="text-forge-steel/80 text-sm leading-relaxed">{member.bio}</p>
             </div>
           </div>
         ))}
@@ -195,17 +231,19 @@ const values = [
     </div>
   </section>
 
+  <FAQ faq={faq} />
+
   <!-- CTA -->
   <section class="py-20 bg-forge-orange">
     <div class="max-w-2xl mx-auto px-4 sm:px-6 text-center">
       <h2 class="font-display font-800 text-white uppercase text-display-lg mb-4">
         Come and meet us
       </h2>
-      <p class="text-white/80 mb-8">
+      <p class="text-white mb-8">
         Book a free tour of the facility and a consultation with one of our practitioners.
         No obligation, no sales pressure.
       </p>
-      <a href="/contact" class="btn-white">Book a free tour</a>
+      <a href="/contact/" class="btn-white">Book a free tour</a>
     </div>
   </section>
 
